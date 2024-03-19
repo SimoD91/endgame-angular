@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Buda:wght@300&display=swap');
+
+.bodyWelcome {
+  background-color: rgba(32, 32, 32, 1);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.cont1{
+  height: 85vh;
+}
+p{
+    font-family: "Buda", serif;
+    font-weight: 300;
+    font-style: normal;
+    color:white;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 6px black;
+}
+.sh2image{
+  width: 25%;
+  border-radius: 5%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.479);
+}
+@media (max-width: 575.50px){
+.cont1{
+  height: 60vh;
+}
+p{
+  font-size: 0.6rem;
+}
+.sh2image{
+  width: 100%;
+}
+}
+@media (max-width: 425.50px){
+  .cont1{
+    height:70vh;
+    padding-top: 20px;
+  }
+}
