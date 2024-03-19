@@ -17,7 +17,6 @@ export class LoadingComponent {
       ngOnInit(){
       this.cambioPag();
       setTimeout(() => {
-        this.showContainer = true;
       }, 1570);
     }
 
