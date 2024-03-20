@@ -1,6 +1,14 @@
+@import url('https://fonts.cdnfonts.com/css/gobold');
 .background{
-  background-color: rgba(32, 32, 32, 1);
-  margin: 0;
-  padding: 0;
-  height: 90vh;
+  background-color: black;
+  height: 100vh;
+}
+.box-auth{
+  width: 30%;
+}
+
+@media screen and (max-width:767px){
+    .background{
+      height: 100vh;
+    }
 }

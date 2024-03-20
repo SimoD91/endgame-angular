@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-loading',
   templateUrl: './loading.component.html',
@@ -17,6 +16,7 @@ export class LoadingComponent {
       ngOnInit(){
       this.cambioPag();
       setTimeout(() => {
+        this.showContainer = true;
       }, 1570);
     }
 
@@ -25,4 +25,5 @@ export class LoadingComponent {
         this.router.navigate(['dashboard/portal']);
       }, 6000);
     }
+
 }

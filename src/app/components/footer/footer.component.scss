@@ -1,31 +1,30 @@
 footer{
-  background: linear-gradient(to top,#141414, #1a1a1a, #222222, #2b2b2b, #333333);
-  border-top: 1px solid rgba(128, 128, 128, 0.436);
+  background: transparent;
   position: absolute;
   bottom: 0;
   width: 100%;
 }
 
 .footer, .address {
-  width: 70%;
+  width: 90%;
 }
 
 
 p{
   font-size: 0.7rem;
-  color:#bebebe;
+  color:#ffffff;
   text-shadow: 1px 1px 3px black;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Gobold Lowplus', sans-serif;
 }
 
 
 
 .address{
-  border-top: 1px solid #ffffff8c;
+  border-top: 1px solid #ffffff;
   padding-top: 10px;
 }
 .bi{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 a{
@@ -33,35 +32,27 @@ a{
   text-decoration:none;
 }
 .bi-facebook{
-  color:#405de6;
+  color: white;
 }
 .bi-youtube{
-  color: red;
+  color: white;
 }
 .bi-instagram{
-  background: linear-gradient(to right, #fff200, #ffa200, #c13584);
-  -webkit-background-clip: text;
-  color: transparent;
+  color: white;
 }
 .bi-instagram:hover{
-    -webkit-background-clip: text;
     color: white;
 }
 .bi-facebook:hover{
-  -webkit-background-clip: text;
   color: white;
 }
 .bi-youtube:hover{
   color: white;
 }
 .bi-tiktok{
-  background: linear-gradient(to right,rgb(114, 225, 157), rgb(255, 102, 158));
-  -webkit-background-clip: text;
-  color:transparent;
-  transition: background-color 0.10s ease;
+  color: white;
 }
 .bi-tiktok:hover{
-  -webkit-background-clip: text;
   color: white;
 }
 @media (max-width: 425.50px){
