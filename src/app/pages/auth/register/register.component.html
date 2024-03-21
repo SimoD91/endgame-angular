@@ -1,1 +1,37 @@
-<p>register works!</p>
+<div class="bodyRegister">
+  <div class="container">
+    <div class="registration-container">
+      <div class="registration-box">
+        <main>
+          <h1 class="text-center mt-4">Benvenuto!</h1>
+          <p class="text-center">Crea il tuo account Endgame</p>
+          <form (ngSubmit)="registerUser()">
+            <div class="form-group">
+              <label for="name" class="mt-0">Nome</label>
+              <input type="text" id="name" class="form-control" name="name" required [(ngModel)]="userRegister.nome" >
+
+              <label for="surname" class="mt-0">Cognome</label>
+              <input type="text" id="surname" class="form-control" name="surname" required [(ngModel)]="userRegister.cognome">
+
+              <label for="email" class="mt-0">Email*</label>
+              <input type="email" id="email" class="form-control" name="email" required [(ngModel)]="userRegister.email">
+
+              <label for="username" class="mt-0">Username*</label>
+              <input type="text" id="username" class="form-control" name="username" required [(ngModel)]="userRegister.username">
+
+              <label for="password" class="mt-0">Password*</label>
+              <input type="password" id="password" name="password" class="form-control" required [(ngModel)]="userRegister.password">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary mt-2">Registrati</button>
+              <p class="text-center account-msg">oppure se hai già un account</p>
+              <button type="button" class="btn btn-secondary" [routerLink]="['../login']">
+                Login
+              </button>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>

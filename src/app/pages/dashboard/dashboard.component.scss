@@ -1,7 +1,7 @@
 @import url('https://fonts.cdnfonts.com/css/gobold');
 
 .bodyWelcome {
-  background-image: url(../../../assets/images/endgame_background.png);
+  background-image: url(../../../assets/images/2_HOME_endgame_background.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -35,6 +35,10 @@ p{
   cursor: pointer;
   margin-bottom: 100px;
 }
+.enter:hover{
+  color: #dedede;
+}
+
 @media screen and (min-width:2559.50px) {
 p{
   padding-top: 100px;

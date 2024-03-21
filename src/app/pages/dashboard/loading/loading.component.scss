@@ -1,10 +1,20 @@
 @import url('https://fonts.cdnfonts.com/css/gobold');
-.background{
+
+.background {
   background-color: black;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .box-auth{
-  width: 30%;
+  width: 60%;
+  height: auto;
+}
+
+.video-bg {
+  width: 100%;
+  height: auto;
 }
 
 @media screen and (max-width:767px){

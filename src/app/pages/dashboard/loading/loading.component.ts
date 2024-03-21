@@ -1,29 +1,31 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-loading',
   templateUrl: './loading.component.html',
-  styleUrl: './loading.component.scss'
+  styleUrls: ['./loading.component.scss']
 })
-export class LoadingComponent {
+export class LoadingComponent implements OnDestroy {
+  private timer: any;
   showContainer: boolean = false;
 
-  constructor(
-    private router:Router,
-    ){}
+  constructor(private router: Router) {}
 
-      ngOnInit(){
+  ngOnInit() {
+    this.showContainer = true;
+
+    this.timer = setTimeout(() => {
       this.cambioPag();
-      setTimeout(() => {
-        this.showContainer = true;
-      }, 1570);
-    }
+    }, 3000);
+  }
 
   cambioPag() {
-      setTimeout(() => {
-        this.router.navigate(['dashboard/portal']);
-      }, 6000);
-    }
+    this.router.navigate(['dashboard/portal']);
+  }
 
+  ngOnDestroy() {
+    clearTimeout(this.timer);
+  }
 }

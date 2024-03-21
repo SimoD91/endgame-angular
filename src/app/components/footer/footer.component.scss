@@ -3,6 +3,7 @@ footer{
   position: absolute;
   bottom: 0;
   width: 100%;
+  z-index: 1500;
 }
 
 .footer, .address {
@@ -55,6 +56,7 @@ a{
 .bi-tiktok:hover{
   color: white;
 }
+
 @media (max-width: 425.50px){
   .bi{
     font-size: 0.8rem;

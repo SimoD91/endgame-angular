@@ -1,10 +1,12 @@
 <div class="background">
-  <div class="container">
+  <div class="container text-center d-flex align-items-center">
     <div class="row justify-content-center">
-      <div class="col-6 col-lg-4 box-auth bg-trasparent my-5">
+      <div class="col-6 col-lg-4 box-auth mb-5 bg-transparent">
         <div class="row justify-content-center">
-          <img  *ngIf="showContainer" class="pt-2" src="../../../../assets/images/endgame logo.png">
-          <h4 class="col-lg-8 mb-3 mt-2 text-danger txt-shadow text-center">Caricamento</h4>
+          <video *ngIf="showContainer" autoplay loop width="100%" height="auto">
+            <source src="../../../../assets/caricamento_video.mp4" type="video/mp4">
+            Il tuo browser non supporta il tag video.
+          </video>
         </div>
       </div>
     </div>

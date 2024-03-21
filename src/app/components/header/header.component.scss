@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
 
 .logo {
-  width: 100px;
+  width: 120px;
   height: 30px;
-  padding: 5px;
+  margin-top: -20px;
 }
 header {
   position: absolute;
@@ -24,9 +24,22 @@ header {
   font-family: 'Gobold Lowplus', sans-serif;
   font-size: 0.9rem;
 }
+.nav-link:hover{
+  color:#dedede;
+}
+.nav-item.active .nav-link {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
 
-.nav-link:hover {
-  color: #ffffff;
+@media (max-width: 991.98px) {
+  .navbar-nav.menu-open {
+    margin-left: auto;
+  }
 }
 
 @media screen and (max-width: 575.50px) {
@@ -36,14 +49,6 @@ header {
 
   .container {
     text-align: right;
-  }
-
-  .navbar-nav {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-grow: 1;
-    margin-left: 10px;
   }
 
   .navbar-brand {

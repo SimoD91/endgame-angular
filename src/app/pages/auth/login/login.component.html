@@ -1,1 +1,32 @@
-<p>login works!</p>
+<div class="container">
+
+  <div class="login-container">
+    <div class="login-box">
+      <main>
+        <div class="container">
+          <h1 class="text-center">Log in with your credentials</h1>
+          <form (ngSubmit)="loginUser()">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="username" name="username" id="username" class="form-control" required [(ngModel)]="userLogin.username" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" class="form-control" required [(ngModel)]="userLogin.password" />
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="login-btn">
+                Login
+              </button>
+              <span *ngIf="logging" class="spinner-border spinner-border-sm" role="status"></span>
+            </div>
+            <p class="text-center">Don't have an account yet?
+              <a class="nav-link" routerLink="../register" routerLinkActive="active">Register here!</a>
+            </p>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+
+</div>

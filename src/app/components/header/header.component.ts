@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,14 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   isMenuOpen = false;
 
+  constructor(private router: Router) {}
+
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  redirectToLoading(): void {
+    // Effettua il reindirizzamento alla pagina di caricamento (loading)
+    this.router.navigateByUrl('/dashboard/loading');
   }
 }
