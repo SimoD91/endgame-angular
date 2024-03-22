@@ -7,7 +7,7 @@
       </button>
       <div class="collapse navbar-collapse" [ngClass]="{'show': isMenuOpen, 'menu-open': isMenuOpen}" id="navbarNav">
         <div class="navbar-collapse justify-content-end nav2">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav nav1">
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link mx-2" (click)="redirectToLoading()" routerLink="dashboard/portal">Portale</a>
             </li>
@@ -15,7 +15,7 @@
               <a class="nav-link mx-2" routerLink="user-page">Profilo</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-              <a class="nav-link mx-2" routerLink="endgame">Endgame</a>
+              <a class="nav-link mx-2" routerLink="about">Endgame</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link mx-2" routerLink="privacy">Privacy</a>
@@ -23,7 +23,7 @@
           </ul>
         </div>
         <div class="navbar-collapse justify-content-end">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav nav2">
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link mx-2" routerLink="auth/login">Login</a>
             </li>

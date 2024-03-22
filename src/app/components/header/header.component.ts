@@ -16,7 +16,6 @@ export class HeaderComponent {
   }
 
   redirectToLoading(): void {
-    // Effettua il reindirizzamento alla pagina di caricamento (loading)
     this.router.navigateByUrl('/dashboard/loading');
   }
 }

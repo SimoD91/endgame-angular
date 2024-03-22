@@ -1,32 +1,35 @@
-<div class="container">
-
-  <div class="login-container">
-    <div class="login-box">
-      <main>
-        <div class="container">
-          <h1 class="text-center">Log in with your credentials</h1>
-          <form (ngSubmit)="loginUser()">
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input type="username" name="username" id="username" class="form-control" required [(ngModel)]="userLogin.username" />
+<div class="bodyLogin">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-4 login-container">
+        <div class="login-box">
+          <main>
+            <h1 class="text-center">Bentornato!</h1>
+            <p class="text-center mt-3">Effettua il login</p>
+            <form (ngSubmit)="loginUser()" class="text-center">
+              <div class="form-group position-relative">
+                <input type="text" id="username" class="form-control" name="username" required [(ngModel)]="userLogin.username"
+                [ngClass]="{ 'active': inputActiveStates['username'] }" (input)="onInputChange('username')" (blur)="onInputBlur('username')" placeholder="username">
+                <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" class="form-control mt-2" required [(ngModel)]="userLogin.password"
+                  [ngClass]="{ 'active': inputActiveStates['password'] }" (input)="onInputChange('password')" (blur)="onInputBlur('password')" placeholder="password">
+                <img id="password-toggle-img" src="../../../../assets/images/password_nascosta_1.png" alt="Show Password" class="password-toggle password-toggle position-absolute end-0 pt-0 translate-middle-y" (click)="togglePasswordVisibility()">
+              </div>
+              <div class="buttonContainer">
+              <div class="form-group mt-3">
+                <button type="submit" class="login-btn">Login</button>
+                <span *ngIf="logging" class="spinner-border spinner-border-sm" role="status"></span>
+              </div>
+              <div class="form-group">
+                <p class="account-msg mt-2">oppure se non hai un account</p>
+                <button type="button" class="register-btn mb-4" [routerLink]="['../register']" routerLinkActive="active">
+                  Registrati
+                </button>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" name="password" id="password" class="form-control" required [(ngModel)]="userLogin.password" />
-            </div>
-            <div class="d-flex justify-content-center">
-              <button type="submit" class="login-btn">
-                Login
-              </button>
-              <span *ngIf="logging" class="spinner-border spinner-border-sm" role="status"></span>
-            </div>
-            <p class="text-center">Don't have an account yet?
-              <a class="nav-link" routerLink="../register" routerLinkActive="active">Register here!</a>
-            </p>
-          </form>
+            </form>
+          </main>
         </div>
-      </main>
+      </div>
     </div>
   </div>
-
 </div>

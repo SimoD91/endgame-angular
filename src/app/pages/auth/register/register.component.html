@@ -1,31 +1,43 @@
 <div class="bodyRegister">
   <div class="container">
-    <div class="registration-container">
-      <div class="registration-box">
-        <main>
-          <h1 class="text-center mt-4">Benvenuto!</h1>
+    <div class="row justify-content-center">
+    <div class="col-6 col-lg-4 registration-container">
+      <div class="col-10 col-lg-10 col-md-10 col-sm-10 registration-box">
+        <main class="row justify-content-center">
+          <h1 class="text-center mt-3">Benvenuto!</h1>
           <p class="text-center">Crea il tuo account Endgame</p>
           <form (ngSubmit)="registerUser()">
-            <div class="form-group">
+            <div class="col-10 col-lg-10 form-group position-relative">
               <label for="name" class="mt-0">Nome</label>
-              <input type="text" id="name" class="form-control" name="name" required [(ngModel)]="userRegister.nome" >
+              <input type="text" id="name" class="form-control" name="name" required [(ngModel)]="userRegister.nome"
+              [ngClass]="{ 'active': inputActiveStates['name'] }" (input)="onInputChange('name')" (blur)="onInputBlur('name')">
 
               <label for="surname" class="mt-0">Cognome</label>
-              <input type="text" id="surname" class="form-control" name="surname" required [(ngModel)]="userRegister.cognome">
+              <input type="text" id="surname" class="form-control" name="surname" required [(ngModel)]="userRegister.cognome"
+              [ngClass]="{ 'active': inputActiveStates['surname'] }" (input)="onInputChange('surname')" (blur)="onInputBlur('surname')">
+
 
               <label for="email" class="mt-0">Email*</label>
-              <input type="email" id="email" class="form-control" name="email" required [(ngModel)]="userRegister.email">
+              <input type="email" id="email" class="form-control" name="email" required [(ngModel)]="userRegister.email"
+              [ngClass]="{ 'active': inputActiveStates['email'] }"
+              (input)="onInputChange('email')" (blur)="onInputBlur('email')"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              title="Inserisci un indirizzo email valido">
+
 
               <label for="username" class="mt-0">Username*</label>
-              <input type="text" id="username" class="form-control" name="username" required [(ngModel)]="userRegister.username">
-
+              <input type="text" id="username" class="form-control" name="username" required [(ngModel)]="userRegister.username"
+              [ngClass]="{ 'active': inputActiveStates['username'] }" (input)="onInputChange('username')" (blur)="onInputBlur('username')">
               <label for="password" class="mt-0">Password*</label>
-              <input type="password" id="password" name="password" class="form-control" required [(ngModel)]="userRegister.password">
+              <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" class="form-control" required [(ngModel)]="userRegister.password"
+                [ngClass]="{ 'active': inputActiveStates['password'] }" (input)="onInputChange('password')" (blur)="onInputBlur('password')">
+              <img id="password-toggle-img" src="../../../../assets/images/password_nascosta_1.png" alt="Show Password" class="password-toggle password-toggle position-absolute end-0 pt-0 translate-middle-y" (click)="togglePasswordVisibility()">
             </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary mt-2">Registrati</button>
-              <p class="text-center account-msg">oppure se hai già un account</p>
-              <button type="button" class="btn btn-secondary" [routerLink]="['../login']">
+            <div class="col-8 col-lg-8 text-center ms-4 box-privacy mt-3">
+              <p class="privacy">Con la registrazione accetti la nostra <a [routerLink]="['../privacy']" class="privacy-link">privacy policy e i termini di servizio.</a></p>
+              <button type="submit" class="btn submit">Registrati</button>
+              <p class="text-center account-msg mt-2">oppure se hai già un account</p>
+              <button type="button" class="btn login mb-4" [routerLink]="['../login']">
                 Login
               </button>
             </div>

@@ -10,19 +10,18 @@
   height: 100vh;
 }
 .registration-box {
-  position: absolute;
-  left: 50%;
-  top: 47%;
-  transform: translate(-50%, -50%);
-  width: 26%;
-  height: 75%;
-  margin-left: -29%;
+  margin-top: 70px;
+  margin-left: -100%;
   background-color: rgba(255, 255, 255, 0.808);
   border-radius: 40px;
+  height: 84%;
 }
 h1, p, label{
   font-family: 'Gobold Lowplus', sans-serif;
   color: #217ea0;
+}
+.form-group{
+  margin-top: -20px;
 }
 
 h1{
@@ -35,17 +34,127 @@ p{
 }
 
 input{
-  margin-left: 50px;
-  width: 300px;
   border-radius: 40px;
+  font-size: 12px;
+  font-family: 'Gobold Lowplus', sans-serif;
   height: 25px;
+}
+input:focus{
+  -webkit-box-shadow: none;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.296);
-  border: 1px solid #217ea0;
 }
 label{
-  margin-left: 55px;
   font-size: 0.7rem;
+}
+form{
+  margin-left: 55px;
 }
 .account-msg{
   margin-top: 10px;
+}
+
+.active {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.296);
+  border: 0.5px solid #217ea0;
+}
+.privacy, .account-msg{
+  font-size: 7px;
+  font-weight: bold;
+}
+
+.box-privacy{
+  margin-left: 2px;
+}
+
+.privacy-link {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.submit{
+  margin-top: -10px;
+  width: 140px;
+  height: 35px;
+  font-family: 'Gobold Lowplus', sans-serif;
+  font-size: 0.7rem;
+  border-radius: 15px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.526);
+  background-color: #217ea0;
+  color: white;
+}
+
+.submit:hover{
+  background-color:#2999c2;
+}
+.login{
+  width: 140px;
+  height: 35px;
+  font-family: 'Gobold Lowplus', sans-serif;
+  font-size: 0.7rem;
+  border-radius: 15px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.526);
+  color: #217ea0;
+  background-color: rgb(234, 234, 234);
+  margin-top: -10px;
+}
+.login:hover{
+  background-color: white;
+}
+.invalid {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+}
+.password-toggle{
+  margin-top: -12px;
+  padding-bottom: 2px;
+  margin-right: 9px;
+  padding-left: 5px;
+  width: 10%;
+  border-left: 1px solid rgba(0, 0, 0, 0.267);
+  cursor:pointer;
+  box-shadow: -3px 0 3px rgba(0, 0, 0, 0.103);
+}
+
+@media screen and (max-width: 991.50px){
+  .registration-box {
+    margin-left: 8%;
+  }
+}
+@media screen and (min-width: 575.50px) and (max-width: 767.50px){
+  .form-group{
+    margin-left: -10px;
+  }
+  .box-privacy{
+    position: relative;
+    right: 18px;
+}
+}
+@media screen and (max-width: 575.50px){
+  .registration-box{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 490.50px){
+  .registration-box{
+  width: 150%;
+  margin-left: -60px;
+  }
+}
+@media screen and (max-width: 483.50px){
+  .form-group{
+    margin-left: -10px;
+  }
+  .box-privacy{
+    position: relative;
+    right: 18px;
+}
+}
+@media screen and (max-width: 339.50px){
+  .registration-box{
+    margin-left: -30px;
+  }
 }

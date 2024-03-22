@@ -3,7 +3,7 @@
 .logo {
   width: 120px;
   height: 30px;
-  margin-top: -20px;
+  margin-top: -15px;
 }
 header {
   position: absolute;
@@ -13,9 +13,7 @@ header {
   background: transparent;
   padding-left: 15px;
 }
-.nav2{
-  padding-left: 25px;
-}
+
 
 .nav-link {
   color: #ffffff;
@@ -31,14 +29,31 @@ header {
   text-decoration: underline;
   text-decoration-thickness: 2px;
 }
+.navbar-toggler{
+  margin-top: -9px;
+  margin-right: -10px;
+}
 .navbar-toggler:focus {
   outline: none;
   box-shadow: none;
+}
+.password-toggle {
+  cursor: pointer;
+  width: 24px;
+  height: auto;
 }
 
 @media (max-width: 991.98px) {
   .navbar-nav.menu-open {
     margin-left: auto;
+  }
+}
+@media (max-width: 767.50px){
+  .nav1{
+    margin-left: -20px;
+  }
+  .logo{
+    margin-left: -40px;
   }
 }
 
@@ -49,6 +64,7 @@ header {
 
   .container {
     text-align: right;
+    background-size: 50px;
   }
 
   .navbar-brand {
