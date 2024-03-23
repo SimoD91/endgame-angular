@@ -11,7 +11,7 @@ header {
   width: 100%;
   z-index: 1000;
   background: transparent;
-  padding-left: 15px;
+  padding-left: 45px;
 }
 
 
@@ -55,6 +55,18 @@ header {
   .logo{
     margin-left: -40px;
   }
+}
+@media (max-width: 603.50px){
+  .navbar-nav {
+    &.nav2 {
+      li {
+        margin-left: -9px; // Diminuisci lo spazio tra gli elementi
+        &:last-child {
+          margin-left: -9px; // Rimuovi il margine destro dall'ultimo elemento
+        }
+      }
+    }
+}
 }
 
 @media screen and (max-width: 575.50px) {

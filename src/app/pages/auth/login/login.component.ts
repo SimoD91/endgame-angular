@@ -54,9 +54,9 @@ export class LoginComponent {
     this.showPassword = !this.showPassword;
     const imgElement = document.getElementById('password-toggle-img') as HTMLImageElement;
     if (this.showPassword) {
-      imgElement.src = "../../../../assets/images/password_visibile_1.png";
+      imgElement.src = "../../../../assets/icons/password_visibile_1.png";
     } else {
-      imgElement.src = "../../../../assets/images/password_nascosta_1.png";
+      imgElement.src = "../../../../assets/icons/password_nascosta_1.png";
     }
   }
 }

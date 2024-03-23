@@ -57,11 +57,16 @@ a{
   color: white;
 }
 
+.hidefooter{
+  display: none;
+}
+
 @media (max-width: 425.50px){
   .bi{
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
+
   p{
-    font-size: 0.6rem;
+    font-size: 0.9rem;
   }
 }

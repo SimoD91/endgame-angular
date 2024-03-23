@@ -12,7 +12,7 @@
                 [ngClass]="{ 'active': inputActiveStates['username'] }" (input)="onInputChange('username')" (blur)="onInputBlur('username')" placeholder="username">
                 <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" class="form-control mt-2" required [(ngModel)]="userLogin.password"
                   [ngClass]="{ 'active': inputActiveStates['password'] }" (input)="onInputChange('password')" (blur)="onInputBlur('password')" placeholder="password">
-                <img id="password-toggle-img" src="../../../../assets/images/password_nascosta_1.png" alt="Show Password" class="password-toggle password-toggle position-absolute end-0 pt-0 translate-middle-y" (click)="togglePasswordVisibility()">
+                <img id="password-toggle-img" src="../../../../assets/icons/password_nascosta_1.png" alt="Show Password" class="password-toggle password-toggle position-absolute end-0 pt-0 translate-middle-y" (click)="togglePasswordVisibility()">
               </div>
               <div class="buttonContainer">
               <div class="form-group mt-3">

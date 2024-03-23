@@ -1,14 +1,197 @@
 @import url('https://fonts.cdnfonts.com/css/gobold');
 .bodyPortal{
-  background-image: url(../../../../assets/images/PORTAL_endgame_background_ready-min.jpg);
+  background-image: url(../../../../assets/images/PORTAL_endgame_background_ready-min.png);
   background-position: center center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   background-size: cover;
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
   height: 100vh;
-  filter: brightness(0.7);
 }
-p{
-  color:red;
+
+.contPortal{
+  padding-top: 57px;
+}
+
+.searchbar{
+  padding-left: 107px;
+}
+
+input, .form-select, .btn-block{
+  height: 34px;
+  font-size: 10.5px;
+  font-family: 'Gobold Lowplus', sans-serif;
+}
+
+.form-select {
+  background-image: none;
+  background-color: white;
+  cursor:pointer;
+  border: 0.5px solid #00000043;
+}
+
+.form-select:focus, input:focus{
+  -webkit-box-shadow: none;
+  border: 0.5px solid #00000043;
+}
+
+.form-control::placeholder {
+  color: black;
+}
+
+.dropdown{
+  overflow-y: scroll;
+}
+
+.dropdown-item{
+  background-color:black;
+  color:white;
+}
+
+.form1{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.form2{
+  border-radius: 0px;
+}
+.form3{
+  border-radius: 0px;
+}
+
+.form4{
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.btn-block{
+  border-radius: 20px;
+}
+
+.card{
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border: none;
+  background-color: rgb(161, 157, 235);
+  height: 100%;
+}
+
+.card-body{
+  padding: 0px;
+  height: 100%;
+  font-size: 0.7rem;
+}
+
+.posterImage{
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  height: 250px;
+  width: 100%;
+}
+
+.contButtons{
+margin-top: 25px;
+}
+
+.pageNumber {
+  font-size: 0.8rem;
+  color: white;
+  cursor: pointer;
+  font-family: 'Gobold Lowplus', sans-serif;
+}
+
+.pageNumber.active {
+  text-decoration: underline;
+}
+
+.bi-caret-right-fill, .bi-caret-left-fill{
+  color:white;
+  cursor:pointer;
+}
+
+@media screen and (max-width: 1399.50px){
+
+input{
+  margin-right: -50px;
+}
+}
+@media screen and (max-width: 991.50px){
+  .bodyPortal{
+    height: 100%;
+  }
+  .searchbar{
+    margin-left: 35px;
+  }
+  .contButtons{
+    padding-bottom: 10px;
+    }
+}
+@media screen and (max-width: 767.50px){
+  .searchbar{
+  padding-left: 63px;
+}
+.col-md-2 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+.form1{
+  border: none;
+}
+
+.form2{
+  margin-top: -1px;
+  margin-left: 0px;
+}
+
+.form1, .form2, .form3, .form4{
+  border-radius: 20px;
+}
+.btn-block{
+  margin-left: 46px;
+  margin-top: 5px;
+}
+}
+@media screen and (max-width: 575.50px){
+  .searchbar{
+    padding-left: 10px;
+  }
+  .btn-block{
+    margin-left: 150px;
+  }
+  .pageNumber{
+    font-size: 1rem;
+    }
+    .posterImage{
+      height: 100%;
+    }
+}
+
+@media screen and (max-width: 504.50px){
+  .btn-block{
+    margin-left: 135px;
+  }
+}
+@media screen and (max-width: 426.50px){
+  .btn-block{
+    margin-left: 100px;
+  }
+}
+
+@media screen and (max-width: 375.50px){
+  .btn-block{
+    margin-left: 83px;
+  }
+}
+
+@media screen and (max-width: 320.50px){
+  .btn-block{
+    margin-left: 60px;
+  }
 }
