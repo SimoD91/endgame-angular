@@ -9,6 +9,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { AboutComponent } from './pages/about/about.component';
+import { VideogameService } from './services/videogame.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,13 @@ import { AboutComponent } from './pages/about/about.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    VideogameService
+
   ],
   bootstrap: [AppComponent]
 })

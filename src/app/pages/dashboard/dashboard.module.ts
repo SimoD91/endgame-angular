@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { TitleComponent } from './title/title.component';
 import { PortalComponent } from './portal/portal.component';
 import { LoadingComponent } from './loading/loading.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { LoadingComponent } from './loading/loading.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

@@ -21,4 +21,5 @@ export class UserService {
   login(credentials: UserLogin): Observable<IConfirmRes> {
     return this.http.post<any>(`${this.baseUrl}/auth/login`, credentials);
   }
+
 }

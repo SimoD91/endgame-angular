@@ -1,9 +1,9 @@
 export interface Ivideogame {
-  titolo          : String
-  annoDiUscita    : String
-  genere          : String
-  console         : String
-  publisher       : String
-  metascore       : String
-  cover           : String
+  titolo          : string
+  annoDiUscita    : string
+  genere          : string
+  console         : string
+  publisher       : string
+  metascore       : string
+  cover           : string
 }

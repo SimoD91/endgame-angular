@@ -7,7 +7,7 @@
   background-attachment: fixed;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
 }
 
 .contPortal{
@@ -73,14 +73,31 @@ input, .form-select, .btn-block{
   border-radius: 20px;
 }
 
+h3, p{
+  color:white;
+  text-shadow: 1px 1px 3px black;
+  font-family: 'Gobold Lowplus', sans-serif;
+}
+
+.btn-discover{
+  color: white;
+  border-radius: 10px;
+  height: 25px;
+  font-size: 0.6rem;
+  font-family: 'Gobold Lowplus', sans-serif;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.497);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.636);
+}
+
 .card{
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   border: none;
-  background-color: rgb(161, 157, 235);
   height: 100%;
+  box-shadow: 1px 1px 3px black;
+  background: linear-gradient(to top, #000000, #ffffff);
 }
 
 .card-body{
@@ -94,6 +111,7 @@ input, .form-select, .btn-block{
   border-top-right-radius: 0px;
   height: 250px;
   width: 100%;
+  box-shadow: 1px 1px 3px black;
 }
 
 .contButtons{
@@ -193,5 +211,8 @@ input{
 @media screen and (max-width: 320.50px){
   .btn-block{
     margin-left: 60px;
+  }
+  h3{
+  margin-right: -50px;
   }
 }

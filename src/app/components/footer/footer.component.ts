@@ -6,12 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 hideFooter: boolean = false;
 
 constructor(private router: Router){
 }
-
+/*
 //--- Metodo per rimuovere footer durante lo scroll della Portal page ---\\
 ngOnInit(): void {
   if (typeof window !== 'undefined') {
@@ -31,4 +31,5 @@ controlSizePage(){
     this.hideFooter = false;
   }
 }
+*/
 }
