@@ -11,12 +11,17 @@ export class VideogameService {
 
   constructor(private http: HttpClient) {}
 
- getAllVideogames(startIndex: number, pageSize: number): Observable<any> {
+ getAllVideogamesByMetacritic(startIndex: number, pageSize: number): Observable<any> {
     return this.http.get<Ivideogame[]>(this.apiUrl);
   }
 
   searchVideogames(query: string): Observable<any> {
     const url = `http://localhost:8080/videogiochi/get/sorted/titolo?titolo=${query}`;
+    return this.http.get(url);
+  }
+
+  searchVideogamesByGenre(genre: string): Observable<any> {
+    const url = `http://localhost:8080/videogiochi/get/sorted/genere?genere=${genre}`;
     return this.http.get(url);
   }
 }

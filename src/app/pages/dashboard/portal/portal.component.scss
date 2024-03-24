@@ -10,6 +10,7 @@
   height: 100%;
 }
 
+
 .contPortal{
   padding-top: 57px;
 }
@@ -73,6 +74,10 @@ input, .form-select, .btn-block{
   border-radius: 20px;
 }
 
+.cardContainer{
+  padding-bottom: 50px;
+}
+
 h3, p{
   color:white;
   text-shadow: 1px 1px 3px black;
@@ -98,6 +103,12 @@ h3, p{
   height: 100%;
   box-shadow: 1px 1px 3px black;
   background: linear-gradient(to top, #000000, #ffffff);
+  transition: 0.4s ease;
+}
+
+.card:hover{
+  transform:scale(1.1);
+  cursor:pointer;
 }
 
 .card-body{
@@ -133,6 +144,11 @@ margin-top: 25px;
   color:white;
   cursor:pointer;
 }
+
+.cardContainer{
+  padding-bottom: 200px;
+}
+
 
 @media screen and (max-width: 1399.50px){
 
@@ -213,6 +229,6 @@ input{
     margin-left: 60px;
   }
   h3{
-  margin-right: -50px;
+  text-align:center;
   }
 }

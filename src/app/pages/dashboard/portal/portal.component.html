@@ -7,12 +7,13 @@
             <input name="searchQuery" type="text" class="form-control form1" placeholder="Inserisci titolo" [(ngModel)]="searchQuery">
           </div>
           <div class="col-10 col-sm-7 col-md-2 col-lg-2 px-0 px-lg-1 contForm2">
-            <select name="type" class="form-select form2">
+            <select name="type" class="form-select form2" [(ngModel)]="selectedGenre">
               <option class="dropdown-item" hidden disabled selected value="">Genere</option>
               <option class="dropdown-item" value="any">Qualsiasi</option>
               <option class="dropdown-item" value="horror">Survival Horror</option>
               <option class="dropdown-item" value="adventure">Action-Adventure</option>
               <option class="dropdown-item" value="gdr">GDR</option>
+              <option class="dropdown-item" value="platform">Platform</option>
             </select>
           </div>
           <div class="col-10 col-sm-7 col-md-2 col-lg-2 px-0 px-lg-1 contForm3">
@@ -36,35 +37,51 @@
       </form>
     </div>
     <div class="container">
-      <div class="row justify-content-center flex-wrap">
-        <h3 class="mb-3">I migliori per Metacritic</h3>
-        <ng-container *ngFor="let videogame of videogames">
-          <div class="col-10 col-sm-6 col-md-4 col-lg-2 mb-5">
-            <div class="card">
-              <a>
-                <img [src]="videogame.cover" class="card-img-top posterImage" alt="...">
-              </a>
-              <div class="card-body text-center">
-                <p class="card-title mx-0 my-0 mt-1">
-                  {{ videogame.titolo }}
-                </p>
-                    <p class="my-0">
+      <div class="row justify-content-center flex-wrap cardContainer">
+        <ng-container *ngIf="searched; else metacriticGames">
+          <ng-container *ngFor="let videogame of searchedVideogames">
+            <div class="col-10 col-sm-6 col-md-4 col-lg-2 mb-5">
+              <div class="card">
+                <a>
+                  <img [src]="videogame.cover" class="card-img-top posterImage" alt="...">
+                </a>
+                <div class="card-body text-center">
+                  <p class="card-title mx-0 my-0 mt-1">
+                    {{ videogame.titolo }}
+                  </p>
+                  <p class="my-0">
                     {{ videogame.genere }}
                   </p>
-                <p class="card-text mx-0 my-0">{{ videogame.annoDiUscita }}</p>
-                <a class="btn btn-warning btn-discover mx-0 my-1">Scopri</a>
+                  <p class="card-text mx-0 my-0">{{ videogame.annoDiUscita }}</p>
+                  <a class="btn btn-warning btn-discover mx-0 my-1">Scopri</a>
+                </div>
               </div>
             </div>
-          </div>
+          </ng-container>
         </ng-container>
+        <ng-template #metacriticGames>
+          <h3 class="mb-3">I migliori per Metacritic</h3>
+          <ng-container *ngFor="let videogame of videogames">
+            <div class="col-10 col-sm-6 col-md-4 col-lg-2 mb-5">
+              <div class="card">
+                <a>
+                  <img [src]="videogame.cover" class="card-img-top posterImage" alt="...">
+                </a>
+                <div class="card-body text-center">
+                  <p class="card-title mx-0 my-0 mt-1">
+                    {{ videogame.titolo }}
+                  </p>
+                  <p class="my-0">
+                    {{ videogame.genere }}
+                  </p>
+                  <p class="card-text mx-0 my-0">{{ videogame.annoDiUscita }}</p>
+                  <a class="btn btn-warning btn-discover mx-0 my-1">Scopri</a>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-template>
       </div>
     </div>
-  <div class="d-flex justify-content-center align-items-center contButtons">
-      <i class="bi bi-caret-left-fill mr-2" (click)="previousPage()"></i>
-      <div *ngFor="let pageNumber of pageNumbers" class="mx-2" [class.active]="pageNumber === currentPage">
-        <span class="pageNumber" (click)="goToPage(pageNumber)">{{ pageNumber }}</span>
-      </div>
-      <i class="bi bi-caret-right-fill ml-2" (click)="nextPage()"></i>
-    </div>
   </div>
-  </div>
+</div>
