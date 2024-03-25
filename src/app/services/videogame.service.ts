@@ -7,12 +7,18 @@ import { Ivideogame } from '../pages/dashboard/models/ivideogame';
   providedIn: 'root'
 })
 export class VideogameService {
-  private apiUrl = 'http://localhost:8080/videogiochi/get/sorted/bestmetascore';
+apiUrl = 'http://localhost:8080/videogiochi/get/sorted/bestmetascore';
+  private apiUrlAll = 'http://localhost:8080/videogiochi/get';
+
 
   constructor(private http: HttpClient) {}
 
- getAllVideogamesByMetacritic(startIndex: number, pageSize: number): Observable<any> {
+  getAllVideogamesByMetacritic(): Observable<any> {
     return this.http.get<Ivideogame[]>(this.apiUrl);
+  }
+
+  getAllVideogames(): Observable<any>{
+    return this.http.get<Ivideogame[]>(this.apiUrlAll);
   }
 
   searchVideogames(query: string): Observable<any> {
@@ -24,4 +30,10 @@ export class VideogameService {
     const url = `http://localhost:8080/videogiochi/get/sorted/genere?genere=${genre}`;
     return this.http.get(url);
   }
+
+  searchVideogamesTitleAndGenre(query: string, selectedGenre: string): Observable<any> {
+    const url = `http://localhost:8080/videogiochi/get/sorted/titoloegenere?titolo=${query}&genere=${selectedGenre}`;
+    return this.http.get<Ivideogame[]>(url);
+  }
+
 }

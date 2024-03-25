@@ -4,7 +4,7 @@
       <form ngModule class="col-10 col-sm-7 col-md-12 col-lg-8">
         <div class="row">
           <div class="col-10 col-sm-7 col-md-2 col-lg-3 px-0 px-lg-1 divInput">
-            <input name="searchQuery" type="text" class="form-control form1" placeholder="Inserisci titolo" [(ngModel)]="searchQuery">
+            <input name="searchQuery" type="text" class="form-control form1" placeholder="Inserisci titolo" [(ngModel)]="searchQuery" (click)="clearSearchQuery()">
           </div>
           <div class="col-10 col-sm-7 col-md-2 col-lg-2 px-0 px-lg-1 contForm2">
             <select name="type" class="form-select form2" [(ngModel)]="selectedGenre">
@@ -60,7 +60,7 @@
           </ng-container>
         </ng-container>
         <ng-template #metacriticGames>
-          <h3 class="mb-3">I migliori per Metacritic</h3>
+          <h3 class="mb-3">{{ pageTitle }}</h3>
           <ng-container *ngFor="let videogame of videogames">
             <div class="col-10 col-sm-6 col-md-4 col-lg-2 mb-5">
               <div class="card">
