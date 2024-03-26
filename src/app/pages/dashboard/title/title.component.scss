@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 .bodyTitle{
   background-color: rgb(15, 15, 42);
   background-position: center center;
@@ -11,6 +14,8 @@
 
 .posterImm{
   width: 100%;
+  border: 1px solid grey;
+  box-shadow: 1px 1px 3px black;
 }
 
 .containerCover{
@@ -18,10 +23,181 @@
 }
 
 .img-fluid{
-  max-height: 140px;
-
+  height: 130px;
+  width: 200px;
+  border: 1px solid grey;
+  box-shadow: 1px 1px 3px black;
 }
 
-p, span{
+iframe{
+  border: 1px solid grey;
+  box-shadow: 1px 1px 3px black;
+}
+
+.cardContainer{
+  padding-bottom: 50px;
+}
+
+.containTitle{
+  border-bottom: 1px solid white;
+}
+
+h1, h3{
+  color:white;
+  text-shadow: 1px 1px 3px black;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.sectionPlot, .sectionTitle{
+  color:white;
+  text-shadow: 1px 1px 3px black;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+p{
+  color:white;
+  text-shadow: 1px 1px 3px black;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 0.9rem;
+}
+
+.btn-discover{
+  color: white;
+  border-radius: 10px;
+  height: 25px;
+  font-size: 0.6rem;
+  font-family: 'Gobold Lowplus', sans-serif;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.497);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.636);
+}
+
+.card{
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border: none;
+  height: 100%;
+  box-shadow: 1px 1px 3px black;
+  background: linear-gradient(to top, #000000, #ffffff);
+  transition: 0.4s ease;
+}
+
+.card:hover{
+  transform:scale(1.1);
+  cursor:pointer;
+}
+
+.card-body{
+  padding: 0px;
+  height: 100%;
+  font-size: 0.7rem;
+}
+
+.posterImage{
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  height: 250px;
+  width: 100%;
+  box-shadow: 1px 1px 3px black;
+}
+
+span{
 color:white;
+}
+
+.review{
+  border-top: 1px solid white;
+}
+
+.pageTitle{
+  border-top: 1px solid white;
+}
+
+.metacriticLogo{
+  width: 50%;
+}
+
+.vote{
+  margin-left: -23px;
+  padding-bottom: 4px;
+  color:white;
+  text-shadow: 1px 1px 3px black;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@media screen and (max-width: 991.50px){
+  .contTitleReview{
+    padding-top: 400px;
+  }
+  .vote{
+    margin-left: -19px;
+  }
+}
+
+@media screen and (max-width: 768.50px){
+  .contTitleReview{
+    padding-top: 590px;
+  }
+}
+
+@media screen and (max-width: 767.50px){
+  .contTitleReview{
+    padding-top: 550px;
+  }
+  .vote{
+    margin-left: -11px;
+  }
+}
+@media screen and (max-width: 575.50px){
+  .contTitleReview{
+    padding-top: 500px;
+  }
+
+  .vote{
+    margin-left: -13px;
+  }
+}
+
+@media screen and (max-width: 425.70px){
+  .contTitleReview{
+    padding-top: 480px;
+  }
+  .vote{
+    margin-left: -8px;
+  }
+
+  @media screen and (max-width: 401.70px){
+    .contTitleReview{
+      padding-top: 440px;
+    }
+  }
+}
+@media screen and (max-width: 375.70px){
+  .contTitleReview{
+    padding-top: 390px;
+  }
+  .vote{
+    margin-left: -5px;
+  }
+}
+
+@media screen and (max-width: 320.70px){
+  .contTitleReview{
+    padding-top: 350px;
+  }
+  .vote{
+    margin-left: -2px;
+  }
 }
