@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ivideogame } from '../pages/dashboard/models/ivideogame';
+import { Ivideogamedetails } from '../pages/dashboard/models/ivideogamedetails';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VideogameService {
 apiUrl = 'http://localhost:8080/videogiochi/get/sorted/bestmetascore';
-  private apiUrlAll = 'http://localhost:8080/videogiochi/get';
+apiUrlAll = 'http://localhost:8080/videogiochi/get';
 
 
   constructor(private http: HttpClient) {}
@@ -34,6 +35,21 @@ apiUrl = 'http://localhost:8080/videogiochi/get/sorted/bestmetascore';
   searchVideogamesTitleAndGenre(query: string, selectedGenre: string): Observable<any> {
     const url = `http://localhost:8080/videogiochi/get/sorted/titoloegenere?titolo=${query}&genere=${selectedGenre}`;
     return this.http.get<Ivideogame[]>(url);
+  }
+
+  searchVideogamesByYear(year: number): Observable<any> {
+    const url = `http://localhost:8080/videogiochi/get/sorted/anno?annoDiUscita=${year}`;
+    return this.http.get<Ivideogame[]>(url);
+  }
+
+  searchVideogamesByConsole(selectedConsole: string): Observable<any> {
+    const url = `http://localhost:8080/videogiochi/get/sorted/console?console=${selectedConsole}`;
+    return this.http.get<Ivideogame[]>(url);
+  }
+
+  getVideogiocoById(id: number): Observable<Ivideogamedetails> {
+    const url = `http://localhost:8080/videogiochi/get/${id}`;
+    return this.http.get<Ivideogamedetails>(url);
   }
 
 }

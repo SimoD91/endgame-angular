@@ -17,17 +17,17 @@
             </select>
           </div>
           <div class="col-10 col-sm-7 col-md-2 col-lg-2 px-0 px-lg-1 contForm3">
-            <input name="year" type="text" class="form-control form3" placeholder="Anno">
+            <input name="year" type="text" class="form-control form3" placeholder="Anno" [(ngModel)]="searchYear" (click)="clearSearchYear()">
           </div>
           <div class="col-10 col-sm-7 col-md-2 col-lg-3 px-0 px-lg-1 contForm4">
-            <select name="platform" class="form-select form4 dropdown">
+            <select name="platform" class="form-select form4 dropdown" [(ngModel)]="selectedConsole">
               <option hidden disabled selected value="">Piattaforma</option>
               <option class="dropdown-item" value="any">Qualsiasi</option>
               <option class="dropdown-item" value="pc">PC</option>
-              <option class="dropdown-item" value="ps1">PlayStation</option>
-              <option class="dropdown-item" value="ps2">Xbox</option>
-              <option class="dropdown-item" value="ps3">Nintendo</option>
-              <option class="dropdown-item" value="ps3">Mobile</option>
+              <option class="dropdown-item" value="playstation">PlayStation</option>
+              <option class="dropdown-item" value="xbox">Xbox</option>
+              <option class="dropdown-item" value="nintendo">Nintendo</option>
+              <option class="dropdown-item" value="mobile">Mobile</option>
             </select>
           </div>
           <div class="col-10 col-sm-7 col-md-2 col-lg-2 divButton px-0">
@@ -42,7 +42,7 @@
           <ng-container *ngFor="let videogame of searchedVideogames">
             <div class="col-10 col-sm-6 col-md-4 col-lg-2 mb-5">
               <div class="card">
-                <a>
+                <a [routerLink]="['/dashboard/title', videogame.idVideogioco]">
                   <img [src]="videogame.cover" class="card-img-top posterImage" alt="...">
                 </a>
                 <div class="card-body text-center">
@@ -53,7 +53,7 @@
                     {{ videogame.genere }}
                   </p>
                   <p class="card-text mx-0 my-0">{{ videogame.annoDiUscita }}</p>
-                  <a class="btn btn-warning btn-discover mx-0 my-1">Scopri</a>
+                  <a class="btn btn-warning btn-discover mx-0 my-1" [routerLink]="['/dashboard/title', videogame.idVideogioco]">Scopri</a>
                 </div>
               </div>
             </div>
@@ -64,7 +64,7 @@
           <ng-container *ngFor="let videogame of videogames">
             <div class="col-10 col-sm-6 col-md-4 col-lg-2 mb-5">
               <div class="card">
-                <a>
+                <a [routerLink]="['/dashboard/title', videogame.idVideogioco]">
                   <img [src]="videogame.cover" class="card-img-top posterImage" alt="...">
                 </a>
                 <div class="card-body text-center">
@@ -75,7 +75,7 @@
                     {{ videogame.genere }}
                   </p>
                   <p class="card-text mx-0 my-0">{{ videogame.annoDiUscita }}</p>
-                  <a class="btn btn-warning btn-discover mx-0 my-1">Scopri</a>
+                  <a class="btn btn-warning btn-discover mx-0 my-1" [routerLink]="['/dashboard/title', videogame.idVideogioco]">Scopri</a>
                 </div>
               </div>
             </div>

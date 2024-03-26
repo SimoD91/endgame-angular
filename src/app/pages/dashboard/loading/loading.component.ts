@@ -18,7 +18,7 @@ export class LoadingComponent implements OnDestroy {
 
     this.timer = setTimeout(() => {
       this.cambioPag();
-    }, 3000);
+    }, 2000);
   }
 
   cambioPag() {

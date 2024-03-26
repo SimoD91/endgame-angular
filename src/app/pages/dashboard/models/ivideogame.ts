@@ -1,4 +1,5 @@
 export interface Ivideogame {
+  idVideogioco    : string
   titolo          : string
   annoDiUscita    : string
   genere          : string
