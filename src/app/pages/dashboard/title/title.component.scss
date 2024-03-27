@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-
 .bodyTitle{
   background-color: rgb(15, 15, 42);
   background-position: center center;
@@ -13,9 +10,11 @@
 }
 
 .posterImm{
-  width: 100%;
+  max-width: 210px;
+  max-height: 310px;
   border: 1px solid grey;
   box-shadow: 1px 1px 3px black;
+  margin-left: -13px;
 }
 
 .containerCover{
@@ -27,7 +26,14 @@
   width: 200px;
   border: 1px solid grey;
   box-shadow: 1px 1px 3px black;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &.enlarged {
+    transform: scale(2.0);
+  }
 }
+
 
 iframe{
   border: 1px solid grey;
@@ -59,6 +65,7 @@ h1, h3{
   font-style: normal;
   font-size: 1rem;
 }
+
 
 p{
   color:white;
@@ -137,6 +144,20 @@ color:white;
   font-style: normal;
 }
 
+#star-fill{
+  cursor:pointer;
+}
+
+#star-empty{
+  cursor:pointer;
+}
+
+@media screen and (max-width: 1199.70px){
+  iframe{
+    margin-left: -60px;
+  }
+}
+
 @media screen and (max-width: 991.50px){
   .contTitleReview{
     padding-top: 400px;
@@ -144,12 +165,19 @@ color:white;
   .vote{
     margin-left: -19px;
   }
+  iframe{
+    margin-left: 0px;
+  }
+  .sectionTrailer{
+    padding-left: 200px;
+  }
 }
 
 @media screen and (max-width: 768.50px){
   .contTitleReview{
     padding-top: 590px;
   }
+
 }
 
 @media screen and (max-width: 767.50px){
@@ -158,6 +186,9 @@ color:white;
   }
   .vote{
     margin-left: -11px;
+  }
+  .sectionTrailer{
+    padding-left: 100px;
   }
 }
 @media screen and (max-width: 575.50px){
@@ -177,12 +208,15 @@ color:white;
   .vote{
     margin-left: -8px;
   }
+  .sectionTrailer{
+    padding-left: 50px;
+  }
+}
 
   @media screen and (max-width: 401.70px){
     .contTitleReview{
       padding-top: 440px;
     }
-  }
 }
 @media screen and (max-width: 375.70px){
   .contTitleReview{
@@ -190,6 +224,9 @@ color:white;
   }
   .vote{
     margin-left: -5px;
+  }
+  .sectionTrailer{
+    padding-left: 30px;
   }
 }
 
@@ -199,5 +236,8 @@ color:white;
   }
   .vote{
     margin-left: -2px;
+  }
+  .sectionTrailer{
+    padding-left: 10px;
   }
 }

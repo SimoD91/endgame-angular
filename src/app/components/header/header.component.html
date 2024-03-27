@@ -7,7 +7,7 @@
       </button>
       <div class="collapse navbar-collapse" [ngClass]="{'show': isMenuOpen, 'menu-open': isMenuOpen}" id="navbarNav">
         <div class="navbar-collapse justify-content-end nav2">
-          <ul class="navbar-nav nav1">
+          <ul class="navbar-nav nav1 ms-2">
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link mx-2" (click)="redirectToLoading()" routerLink="dashboard/portal">Portale</a>
             </li>
@@ -15,21 +15,33 @@
               <a class="nav-link mx-2" routerLink="user-page">Profilo</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-              <a class="nav-link mx-2" routerLink="about">Chi siamo</a>
+              <a class="nav-link mx-2" routerLink="about">Endgame</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
+            <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
               <a class="nav-link mx-2" routerLink="privacy">Privacy</a>
             </li>
           </ul>
         </div>
         <div class="navbar-collapse justify-content-end">
           <ul class="navbar-nav nav2">
-            <li class="nav-item" routerLinkActive="active">
-              <a class="nav-link mx-2 linklog" routerLink="auth/login">Login</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-              <a class="nav-link mx-2 linkreg" routerLink="auth/register">Registrati</a>
-            </li>
+            <ng-container *ngIf="!isLoggedIn; else loggedIn">
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link mx-2 linklog" routerLink="auth/login">Login</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link mx-2 linkreg" routerLink="auth/register">Registrati</a>
+              </li>
+            </ng-container>
+            <ng-template #loggedIn>
+              <li class="nav-item">
+                <a class="nav-link linklog" (click)="logout()">Logout</a>
+              </li>
+              <li class="nav-item px-3">
+                <a routerLink="user-page">
+                  <img src="../../../assets/icons/star-fill.svg" alt="User" class="user-image">
+                </a>
+              </li>
+            </ng-template>
           </ul>
         </div>
       </div>

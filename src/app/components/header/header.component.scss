@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
-
 .logo {
   width: 120px;
   height: 30px;
@@ -19,12 +17,20 @@ header {
   color: #ffffff;
   font-weight: bold;
   text-shadow: 1px 1px 6px black;
-  font-family: 'Gobold Lowplus', sans-serif;
-  font-size: 0.9rem;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 0.8rem;
 }
 .nav-link:hover{
   color:#dedede;
 }
+
+.linklog{
+  cursor:pointer;
+}
+
 .nav-item.active .nav-link {
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -56,13 +62,27 @@ header {
     margin-left: -40px;
   }
 }
+
+@media (max-width: 647.70px){
+  .navbar-nav {
+    &.nav2 {
+      li {
+        margin-left: -12px;
+        &:last-child {
+          margin-left: -12px;
+        }
+      }
+    }
+}
+}
+
 @media (max-width: 603.50px){
   .navbar-nav {
     &.nav2 {
       li {
-        margin-left: -9px; // Diminuisci lo spazio tra gli elementi
+        margin-left: -20px;
         &:last-child {
-          margin-left: -9px; // Rimuovi il margine destro dall'ultimo elemento
+          margin-left: -20px;
         }
       }
     }

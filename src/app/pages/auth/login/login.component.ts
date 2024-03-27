@@ -3,6 +3,7 @@ import { UserLogin } from '../../../models/i-user-dto';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,24 +20,28 @@ export class LoginComponent {
   logging = false;
   inputActiveStates: { [key: string]: boolean } = {};
   showPassword: boolean = false;
+  isLoggedIn: boolean = false;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) {}
 
-  loginUser() {
-    this.logging = true;
-    this.userService.login(this.userLogin)
-      .subscribe(
-        (response) => {
-          console.log('Login successful:', response);
-          setTimeout(() => {
-            this.router.navigate(['../../dashboard/loading'])
-          }, 2000);
-        },
-        (error) => {
-          console.error('Login error:', error);
-        }
-      );
-  }
+loginUser() {
+  this.logging = true;
+  this.userService.login(this.userLogin)
+    .subscribe(
+      (response: any) => {
+        console.log('Login successful:', response);
+        localStorage.setItem('token', response.token);
+        this.authService.updateLoginStatus();
+        this.isLoggedIn = true;
+        setTimeout(() => {
+          this.router.navigate(['../../dashboard/loading']);
+        }, 2000);
+      },
+      (error) => {
+        console.error('Login error:', error);
+      }
+    );
+}
 
   isValidEmail(email: string): boolean {
     const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;

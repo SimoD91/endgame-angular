@@ -17,7 +17,10 @@
               <div class="buttonContainer">
               <div class="form-group mt-3">
                 <button type="submit" class="login-btn">Login</button>
-                <span *ngIf="logging" class="spinner-border spinner-border-sm" role="status"></span>
+                <div *ngIf="logging" class="d-flex flex-column align-items-center">
+                  <span class="spinner-border spinner-border-sm mb-2 mt-2" role="status"></span>
+                  <span class="login-message">Stai effettuando il login</span>
+                </div>
               </div>
               <div class="form-group">
                 <p class="account-msg mt-2">oppure se non hai un account</p>

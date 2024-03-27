@@ -15,6 +15,7 @@ export class TitleComponent implements OnInit {
   pageTitle: string = 'I migliori per Metacritic';
   videogames: any[] = [];
   totalVideogames: number = 0;
+  isEnlarged: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -77,5 +78,15 @@ export class TitleComponent implements OnInit {
         console.error('Errore durante il recupero dei videogiochi:', error);
       }
     );
+  }
+
+  toggleEnlarged(event: MouseEvent) {
+    const imgElement = event.target as HTMLElement;
+    if (this.isEnlarged) {
+      imgElement.classList.remove('enlarged');
+    } else {
+      imgElement.classList.add('enlarged');
+    }
+    this.isEnlarged = !this.isEnlarged;
   }
 }

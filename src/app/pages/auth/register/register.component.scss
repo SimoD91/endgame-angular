@@ -1,5 +1,3 @@
-@import url('https://fonts.cdnfonts.com/css/gobold');
-
 .bodyRegister{
   background-image: url(../../../../assets/images/2_REGISTER_endgame_background_ready.png);
   background-position: center center;
@@ -10,14 +8,17 @@
   height: 100vh;
 }
 .registration-box {
-  margin-top: 70px;
+  margin-top: 47px;
   margin-left: -100%;
   background-color: rgba(255, 255, 255, 0.808);
   border-radius: 40px;
-  height: 84%;
+  height: 90%;
 }
 h1, p, label{
-  font-family: 'Gobold Lowplus', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
   color: #217ea0;
 }
 .form-group{
@@ -25,7 +26,7 @@ h1, p, label{
 }
 
 h1{
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 p{
@@ -36,7 +37,9 @@ p{
 input{
   border-radius: 40px;
   font-size: 12px;
-  font-family: 'Gobold Lowplus', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   height: 25px;
 }
 input:focus{
@@ -44,7 +47,7 @@ input:focus{
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.296);
 }
 label{
-  font-size: 0.7rem;
+  font-size: 0.6rem;
 }
 form{
   margin-left: 55px;
@@ -58,7 +61,7 @@ form{
   border: 0.5px solid #217ea0;
 }
 .privacy, .account-msg{
-  font-size: 7px;
+  font-size: 9px;
   font-weight: bold;
 }
 
@@ -76,8 +79,10 @@ form{
   margin-top: -10px;
   width: 140px;
   height: 35px;
-  font-family: 'Gobold Lowplus', sans-serif;
-  font-size: 0.7rem;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 0.6rem;
   border-radius: 15px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.526);
   background-color: #217ea0;
@@ -90,8 +95,10 @@ form{
 .login{
   width: 140px;
   height: 35px;
-  font-family: 'Gobold Lowplus', sans-serif;
-  font-size: 0.7rem;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 0.6rem;
   border-radius: 15px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.526);
   color: #217ea0;
@@ -117,6 +124,22 @@ form{
   border-left: 1px solid rgba(0, 0, 0, 0.267);
   cursor:pointer;
   box-shadow: -3px 0 3px rgba(0, 0, 0, 0.103);
+}
+
+.spinner-border{
+  color:#217ea0;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+.registerMessage{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #48639a;
+  font-size: 0.7rem;
+  padding-bottom: 20px;
 }
 
 @media screen and (max-width: 991.50px){

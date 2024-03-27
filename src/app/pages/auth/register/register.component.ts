@@ -36,7 +36,6 @@ export class RegisterComponent {
       .subscribe(
         (response) => {
           console.log('Registration successful:', response);
-          this.registering = false;
           setTimeout(() => {
             this.router.navigate(['auth/login'])
           }, 2000);

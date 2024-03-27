@@ -40,6 +40,10 @@
               <button type="button" class="btn login mb-4" [routerLink]="['../login']">
                 Login
               </button>
+              <div *ngIf="registering" class="d-flex flex-column align-items-center">
+                <span class="spinner-border spinner-border-sm ms-2" role="status"></span>
+                <span class="registerMessage">Registrazione effettuata</span>
+            </div>
             </div>
           </form>
         </main>

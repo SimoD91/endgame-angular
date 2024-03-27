@@ -15,7 +15,10 @@ p{
   font-size: 0.7rem;
   color:#ffffff;
   text-shadow: 1px 1px 3px black;
-  font-family: 'Gobold Lowplus', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
 
 
@@ -63,6 +66,6 @@ a{
   }
 
   p{
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
 }
