@@ -19,6 +19,10 @@ export class PortalComponent implements OnInit {
   searchYear: string = '';
   selectedConsole: string = '';
   errorMessage: string = '';
+  pageNumber = 0;
+  currentPage: number = 0; // Pagina corrente
+  totalPages: number = 0; // Numero totale di pagine
+  pageNumbers: number[] = []; // Numeri delle pagine visualizzati
 
   constructor(private videogameService: VideogameService) {
   }
@@ -28,7 +32,7 @@ export class PortalComponent implements OnInit {
   }
 
   loadVideogamesMetacritic(): void {
-    this.videogameService.getAllVideogamesByMetacritic().subscribe(
+    this.videogameService.getAllVideogamesByMetacritic(this.pageNumber).subscribe(
       (data: any) => {
         if (data && Array.isArray(data.content)) {
           this.videogames = data.content;
@@ -262,5 +266,30 @@ clearSearchYear(): void {
     } else {
       console.error('Nessuna console selezionata.');
     }
+  }
+
+  previousPage(): void {
+    // Riduci di 1 il numero corrente di pagina
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      // Esegui una chiamata al servizio per caricare i videogiochi della nuova pagina corrente
+      this.videogameService.getAllVideogamesByMetacritic(this.currentPage);
+    }
+  }
+
+  nextPage(): void {
+    // Incrementa di 1 il numero corrente di pagina
+    if (this.currentPage < this.totalPages - 1) {
+      this.currentPage++;
+      // Esegui una chiamata al servizio per caricare i videogiochi della nuova pagina corrente
+      this.videogameService.getAllVideogamesByMetacritic(this.currentPage);
+    }
+  }
+
+  goToPage(pageNumber: number): void {
+    // Vai alla pagina specificata
+    this.currentPage = pageNumber;
+    // Esegui una chiamata al servizio per caricare i videogiochi della nuova pagina corrente
+    this.videogameService.getAllVideogamesByMetacritic(this.currentPage);
   }
 }

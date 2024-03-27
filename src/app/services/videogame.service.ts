@@ -14,8 +14,8 @@ apiUrlAll = 'http://localhost:8080/videogiochi/get';
 
   constructor(private http: HttpClient) {}
 
-  getAllVideogamesByMetacritic(): Observable<any> {
-    return this.http.get<Ivideogame[]>(this.apiUrl);
+  getAllVideogamesByMetacritic(pageNumber: number): Observable<any> {
+    return this.http.get<Ivideogame[]>(`${this.apiUrl}?page=${pageNumber}`);
   }
 
   getAllVideogames(): Observable<any>{

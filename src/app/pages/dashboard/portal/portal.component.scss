@@ -108,6 +108,11 @@ p{
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.636);
 }
 
+.btn.btn-warning:focus {
+  box-shadow: none;
+  color: #fff;
+}
+
 .card{
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;

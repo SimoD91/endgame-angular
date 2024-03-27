@@ -16,6 +16,7 @@ export class TitleComponent implements OnInit {
   videogames: any[] = [];
   totalVideogames: number = 0;
   isEnlarged: boolean = false;
+  pageNumber: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -65,7 +66,7 @@ export class TitleComponent implements OnInit {
   }
 
   loadVideogamesMetacritic(): void {
-    this.videogameService.getAllVideogamesByMetacritic().subscribe(
+    this.videogameService.getAllVideogamesByMetacritic(this.pageNumber).subscribe(
       (data: any) => {
         if (data && Array.isArray(data.content)) {
           this.videogames = data.content;
@@ -88,5 +89,9 @@ export class TitleComponent implements OnInit {
       imgElement.classList.add('enlarged');
     }
     this.isEnlarged = !this.isEnlarged;
+  }
+
+  goToTopPage(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
