@@ -1,38 +1,43 @@
 <div class="bodyUser">
   <div class="container custom-container">
     <div class="row">
-      <div class="col-md-6 d-flex align-items-center justify-content-center">
-        <img src="../../../assets/icons/favicon_endgame.png" alt="Immagine" class="img-fluid">
+      <div class="col-md-6">
+        <div class="d-flex align-items-center justify-content-center">
+          <img [src]="currentUser?.avatar" alt="Immagine" class="img-fluid">
+        </div>
+        <div class="text-center mt-3">
+          <button class="btn btn-primary">Cambia avatar</button>
+        </div>
       </div>
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-12">
             <label for="inputNome" class="form-label">Nome</label>
-            <p class="form-control" id="inputNome"></p>
+            <p class="form-control" id="inputNome">{{ currentUser?.nome }}</p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <label for="inputCognome" class="form-label">Cognome</label>
-            <p class="form-control" id="inputCognome"></p>
+            <p class="form-control" id="inputCognome">{{ currentUser?.cognome }}</p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <label for="inputEmail" class="form-label">Email</label>
-            <p class="form-control" id="inputEmail"></p>
+            <p class="form-control" id="inputEmail">{{ currentUser?.email }}</p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <label for="inputUsername" class="form-label">Username</label>
-            <p class="form-control" id="inputUsername"></p>
+            <p class="form-control" id="inputUsername">{{ currentUser?.username }}</p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <label for="inputPassword" class="form-label">Password</label>
-            <p class="form-control" id="inputPassword"></p>
+            <p class="form-control" id="inputPassword">{{ currentUser?.password }}</p>
           </div>
         </div>
       </div>

@@ -18,8 +18,8 @@ apiUrlAll = 'http://localhost:8080/videogiochi/get';
     return this.http.get<Ivideogame[]>(`${this.apiUrl}?page=${pageNumber}`);
   }
 
-  getAllVideogames(): Observable<any>{
-    return this.http.get<Ivideogame[]>(this.apiUrlAll);
+  getAllVideogames(pageNumber: number): Observable<any>{
+    return this.http.get<Ivideogame[]>(`${this.apiUrlAll}?page=${pageNumber}`);
   }
 
   searchVideogames(query: string): Observable<any> {

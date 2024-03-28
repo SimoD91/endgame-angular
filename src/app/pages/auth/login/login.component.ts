@@ -34,7 +34,7 @@ loginUser() {
         this.authService.updateLoginStatus();
         this.isLoggedIn = true;
         setTimeout(() => {
-          this.router.navigate(['../../dashboard/loading']);
+          this.router.navigate(['../../dashboard/portal']);
         }, 2000);
       },
       (error) => {

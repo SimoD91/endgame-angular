@@ -20,9 +20,10 @@ export class PortalComponent implements OnInit {
   selectedConsole: string = '';
   errorMessage: string = '';
   pageNumber = 0;
-  currentPage: number = 0; // Pagina corrente
-  totalPages: number = 0; // Numero totale di pagine
-  pageNumbers: number[] = []; // Numeri delle pagine visualizzati
+  currentPage: number = 0;
+  totalPages: number = 0;
+  pageNumbers: number[] = [];
+  showPagination = false;
 
   constructor(private videogameService: VideogameService) {
   }
@@ -32,11 +33,14 @@ export class PortalComponent implements OnInit {
   }
 
   loadVideogamesMetacritic(): void {
-    this.videogameService.getAllVideogamesByMetacritic(this.pageNumber).subscribe(
+    this.videogameService.getAllVideogamesByMetacritic(this.currentPage).subscribe(
       (data: any) => {
         if (data && Array.isArray(data.content)) {
           this.videogames = data.content;
           this.totalVideogames = data.totalElements;
+          this.totalPages = data.totalPages;
+          this.pageNumbers = this.totalPages > 0 ? Array.from({length: this.totalPages}, (_, i) => i) : [];
+          this.showPagination = false;
         } else {
           console.error('Dati non validi per i videogiochi:', data);
         }
@@ -49,11 +53,14 @@ export class PortalComponent implements OnInit {
 
   loadAllVideogames(): void {
     this.pageTitle = 'Tutti i titoli';
-    this.videogameService.getAllVideogames().subscribe(
+    this.videogameService.getAllVideogames(this.currentPage).subscribe(
       (data: any) => {
         if (data && Array.isArray(data.content)) {
           this.videogames = data.content;
           this.totalVideogames = data.totalElements;
+          this.totalPages = data.totalPages;
+          this.pageNumbers = this.totalPages > 0 ? Array.from({length: this.totalPages}, (_, i) => i) : [];
+          this.showPagination = true;
         } else {
           console.error('Dati non validi per i videogiochi:', data);
         }
@@ -268,28 +275,24 @@ clearSearchYear(): void {
     }
   }
 
+  goToPage(pageNumber: number): void {
+    if (pageNumber >= 0 && pageNumber <= this.totalPages) {
+      this.currentPage = pageNumber;
+      this.loadAllVideogames();
+    }
+  }
+
   previousPage(): void {
-    // Riduci di 1 il numero corrente di pagina
     if (this.currentPage > 0) {
       this.currentPage--;
-      // Esegui una chiamata al servizio per caricare i videogiochi della nuova pagina corrente
-      this.videogameService.getAllVideogamesByMetacritic(this.currentPage);
+      this.loadAllVideogames();
     }
   }
 
   nextPage(): void {
-    // Incrementa di 1 il numero corrente di pagina
     if (this.currentPage < this.totalPages - 1) {
       this.currentPage++;
-      // Esegui una chiamata al servizio per caricare i videogiochi della nuova pagina corrente
-      this.videogameService.getAllVideogamesByMetacritic(this.currentPage);
+      this.loadAllVideogames();
     }
-  }
-
-  goToPage(pageNumber: number): void {
-    // Vai alla pagina specificata
-    this.currentPage = pageNumber;
-    // Esegui una chiamata al servizio per caricare i videogiochi della nuova pagina corrente
-    this.videogameService.getAllVideogamesByMetacritic(this.currentPage);
   }
 }

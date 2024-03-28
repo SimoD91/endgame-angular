@@ -86,6 +86,17 @@
               </div>
             </div>
           </ng-container>
+          <div class="pagination-buttons d-flex justify-content-center">
+            <button (click)="previousPage()" [disabled]="currentPage === 0" class="text-light butPage">
+              &lt;
+            </button>
+            <button *ngFor="let pageNumber of pageNumbers" (click)="goToPage(pageNumber)" [class.active]="pageNumber === currentPage" class="text-light">
+              {{ pageNumber + 1 }}
+            </button>
+            <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1" class="text-light butPage">
+              &gt;
+            </button>
+          </div>
         </ng-template>
       </div>
     </div>

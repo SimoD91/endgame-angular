@@ -14,7 +14,7 @@ export class LoaderService {
       if (event instanceof NavigationStart) {
         this.show();
       } else if (event instanceof NavigationEnd) {
-        timer(300).pipe(take(1)).subscribe(() => {
+        timer(1000).pipe(take(1)).subscribe(() => {
           this.hide();
         });
       }

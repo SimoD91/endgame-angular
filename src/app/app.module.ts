@@ -11,6 +11,7 @@ import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { AboutComponent } from './pages/about/about.component';
 import { VideogameService } from './services/videogame.service';
 import { FormsModule } from '@angular/forms';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     PrivacyComponent,
-    AboutComponent
+    AboutComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
