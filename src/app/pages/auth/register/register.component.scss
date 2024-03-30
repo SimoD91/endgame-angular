@@ -34,10 +34,13 @@ p{
   margin-top: -5px;
 }
 
+
 input{
   border-radius: 40px;
   font-size: 12px;
   font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-style: normal;
   font-optical-sizing: auto;
   font-style: normal;
   height: 25px;
@@ -45,6 +48,7 @@ input{
 input:focus{
   -webkit-box-shadow: none;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.296);
+  color: #217ea0;
 }
 label{
   font-size: 0.6rem;
@@ -63,6 +67,14 @@ form{
 .privacy, .account-msg{
   font-size: 9px;
   font-weight: bold;
+}
+
+button{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 .box-privacy{
@@ -108,13 +120,7 @@ form{
 .login:hover{
   background-color: white;
 }
-.invalid {
-  border-color: red;
-}
 
-.error-message {
-  color: red;
-}
 .password-toggle{
   margin-top: -12px;
   padding-bottom: 2px;

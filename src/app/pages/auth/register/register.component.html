@@ -8,11 +8,11 @@
           <p class="text-center">Crea il tuo account Endgame</p>
           <form (ngSubmit)="registerUser()">
             <div class="col-10 col-lg-10 form-group position-relative">
-              <label for="name" class="mt-0">Nome</label>
+              <label for="name" class="mt-0">Nome*</label>
               <input type="text" id="name" class="form-control" name="name" required [(ngModel)]="userRegister.nome"
               [ngClass]="{ 'active': inputActiveStates['name'] }" (input)="onInputChange('name')" (blur)="onInputBlur('name')">
 
-              <label for="surname" class="mt-0">Cognome</label>
+              <label for="surname" class="mt-0">Cognome*</label>
               <input type="text" id="surname" class="form-control" name="surname" required [(ngModel)]="userRegister.cognome"
               [ngClass]="{ 'active': inputActiveStates['surname'] }" (input)="onInputChange('surname')" (blur)="onInputBlur('surname')">
 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { IUser } from '../models/i-user';
@@ -23,29 +23,50 @@ export class UserService {
   }
 
   public getUserIdFromToken(token: string): number {
-    let userId: number;
+    let idUtente: number;
     try {
-        const tokenPayload = JSON.parse(atob(token.split('.')[1]));
-        if (tokenPayload && tokenPayload.hasOwnProperty('userId')) {
-            userId = tokenPayload.userId;
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        const tokenPayload = JSON.parse(jsonPayload);
+        console.log(tokenPayload)
+        if (tokenPayload && tokenPayload.hasOwnProperty('sub')) {
+            idUtente = tokenPayload.sub;
+            console.log('idUtente estratto dal token:', idUtente);
         } else {
-            console.error('Campo userId non presente nel token.');
-            throw new Error('Campo userId non presente nel token.');
+            console.error('Campo idUtente non presente nel token.');
+            throw new Error('Campo idUtente non presente nel token.');
         }
     } catch (error) {
         console.error('Errore durante il decoding del token:', error);
         throw new Error('Errore durante il decoding del token');
     }
-    return userId;
+    return idUtente;
 }
 
-  getUserById(userId: number): Observable<IUser> {
-    return this.http.get<IUser>(`${this.baseUrl}/utenti/${userId}`).pipe(
-      catchError(error => {
-        console.error('Errore nella chiamata API per ottenere i dati dell\'utente:', error);
-        return throwError('Errore nella chiamata API');
-      })
-    );
+
+getUserById(userId: number): Observable<IUser> {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    console.error('Token non presente nel local storage');
+    return throwError('Token non presente nel local storage');
   }
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+  };
+  return this.http.get<IUser>(`${this.baseUrl}/utenti/${userId}`, httpOptions).pipe(
+    catchError(error => {
+      console.error('Errore nella chiamata API per ottenere i dati dell\'utente:', error);
+      return throwError('Errore nella chiamata API');
+    })
+  );
+}
 
 }

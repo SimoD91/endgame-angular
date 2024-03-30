@@ -12,6 +12,16 @@ header {
   padding-left: 20px;
 }
 
+.user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 3px solid white;
+}
+
+.logoutnav {
+  padding-top: 7px;
+}
 
 .nav-link {
   color: #ffffff;
@@ -102,6 +112,14 @@ header {
   .navbar-brand {
     margin-right: auto;
     margin-left: 20px;
+  }
+
+  .logoutnav {
+    padding-top: 0px;
+  }
+
+  .user-image {
+    display:none;
   }
 }
 

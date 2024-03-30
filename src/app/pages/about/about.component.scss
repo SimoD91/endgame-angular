@@ -1,13 +1,47 @@
 @import url('https://fonts.cdnfonts.com/css/gobold');
 .bodyAbout{
-  background-color:black;
+  background: linear-gradient(to top, #000000, #505050);
   background-position: center center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   background-size: cover;
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
 }
-p{
-  color:red;
+
+h1 {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  text-shadow: 1px 1px 3px black;
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-shadow: 1px 1px 3px black;
+}
+
+img {
+  width: 10%;
+}
+
+.contact{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  text-shadow: 1px 1px 3px black;
+}
+
+a{
+  text-decoration: none;
 }

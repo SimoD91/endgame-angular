@@ -1,8 +1,9 @@
 .bodyUser{
-  background-color: rgb(15, 15, 42);
+  background: linear-gradient(to top, #000000, #505050);
   background-position: center center;
-  background-repeat: repeat;
+  background-repeat: repeat-x;
   background-size: cover;
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -15,6 +16,30 @@ h1, p, label, input{
   font-style: normal;
   color: #ffffff;
   font-size: 0.8rem;
+  text-shadow: 1px 1px 3px solid black;
+}
+
+.img-fluid{
+  max-width: 50%;
+  max-height: 50%;
+  border-radius: 100%;
+  border: 3px solid white;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.508);
+}
+
+button{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: black;
+  font-size: 0.8rem;
+  text-shadow: 1px 1px 3px solid black;
+}
+
+.form-control{
+  height: 30px;
+  color: black;
 }
 
 .custom-container {

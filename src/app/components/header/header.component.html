@@ -11,13 +11,13 @@
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link mx-2" routerLink="dashboard/portal">Portale</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
+            <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
               <a class="nav-link mx-2" routerLink="user-page">Profilo</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link mx-2" routerLink="about">Endgame</a>
             </li>
-            <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
+            <li class="nav-item" routerLinkActive="active">
               <a class="nav-link mx-2" routerLink="privacy">Privacy</a>
             </li>
           </ul>
@@ -33,12 +33,16 @@
               </li>
             </ng-container>
             <ng-template #loggedIn>
-              <li class="nav-item">
+              <li class="nav-item logoutnav">
                 <a class="nav-link linklog" (click)="logout()">Logout</a>
               </li>
-              <li class="nav-item px-3">
+              <li class="nav-item px-3 pt-2">
                 <a routerLink="user-page">
-                  <img src="../../../assets/icons/star-fill.svg" alt="User" class="user-image">
+                  <div class="d-flex align-items-center justify-content-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <img [src]="currentUser && currentUser.avatar ? currentUser.avatar : '../../../../assets/icons/avatar-empty.webp'" alt="Immagine" class="user-image">
+                    </div>
+                  </div>
                 </a>
               </li>
             </ng-template>
