@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit{
   isMenuOpen = false;
   isLoggedIn: boolean = false;
   currentUser: IUser | null = null;
+  avatarUrl: string = '';
 
   constructor(
     private router: Router,
@@ -50,25 +51,37 @@ export class HeaderComponent implements OnInit{
 
   getUserData(): void {
     if (typeof localStorage !== 'undefined') {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const userId = this.userService.getUserIdFromToken(token);
-      if (userId) {
-        this.userService.getUserById(userId).subscribe(
-          (user: IUser) => {
-            this.currentUser = user;
-            console.log('Dati utente:', this.currentUser);
-          },
-          (error) => {
-            console.error('Errore nel recupero dei dati utente:', error);
-          }
-        );
+      const token = localStorage.getItem('token');
+      if (token) {
+        const userId = this.userService.getUserIdFromToken(token);
+        if (userId) {
+          this.userService.getUserById(userId).subscribe(
+            (user: IUser) => {
+              this.currentUser = user;
+              console.log('Dati utente:', this.currentUser);
+              if (this.currentUser && this.currentUser.avatar) {
+                this.avatarUrl = this.currentUser.avatar;
+              }
+              this.updateAvatar();
+            },
+            (error) => {
+              console.error('Errore nel recupero dei dati utente:', error);
+            }
+          );
+        } else {
+          console.error('ID utente non valido');
+        }
       } else {
-        console.error('ID utente non valido');
+        console.error('Nessun token trovato nel localStorage');
       }
-    } else {
-      console.error('Nessun token trovato nel localStorage');
     }
   }
+
+  updateAvatar(): void {
+    if (this.currentUser && this.currentUser.avatar) {
+      this.avatarUrl = this.currentUser.avatar;
+    } else {
+      this.avatarUrl = '../../../../assets/icons/avatar-empty.webp';
+    }
   }
 }

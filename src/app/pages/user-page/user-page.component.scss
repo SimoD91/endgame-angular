@@ -16,7 +16,16 @@ h1, p, label, input{
   font-style: normal;
   color: #ffffff;
   font-size: 0.8rem;
-  text-shadow: 1px 1px 3px solid black;
+}
+
+h2 {
+  text-shadow: 1px 1px 3px rgb(0, 0, 0);
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 1.1rem;
 }
 
 .img-fluid{
@@ -60,4 +69,71 @@ button{
       margin-bottom: 1rem;
     }
   }
+}
+
+.prefContainer{
+  border-top: 1px solid rgb(255, 255, 255);
+}
+
+.cardContainer{
+  padding-bottom: 50px;
+}
+
+.card-title{
+  color:white;
+  text-shadow: 1px 1px 3px black;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.btn-discover{
+  color: white;
+  border-radius: 10px;
+  height: 25px;
+  font-size: 0.6rem;
+  font-family: 'Gobold Lowplus', sans-serif;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.497);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.636);
+}
+
+.btn.btn-warning:focus {
+  box-shadow: none;
+  color: #fff;
+}
+
+.card{
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border: none;
+  height: 100%;
+  box-shadow: 1px 1px 3px black;
+  background: linear-gradient(to top, #000000, #ffffff);
+  transition: 0.4s ease;
+}
+
+.card:hover{
+  transform:scale(1.1);
+  cursor:pointer;
+}
+
+.card-body{
+  padding: 0px;
+  height: 100%;
+  font-size: 0.7rem;
+}
+
+.posterImage{
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  height: 250px;
+  width: 100%;
+  box-shadow: 1px 1px 3px black;
+}
+
+.contButtons{
+margin-top: 25px;
 }

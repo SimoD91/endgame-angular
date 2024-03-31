@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { IUser } from '../models/i-user';
 import { UserLogin, UserRegister } from '../models/i-user-dto';
 import { IConfirmRes } from '../models/i-confirm-res';
@@ -69,4 +69,49 @@ getUserById(userId: number): Observable<IUser> {
   );
 }
 
+updateUser(userId: number, userData: any): Observable<IUser> {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    console.error('Token non presente nel local storage');
+    return throwError('Token non presente nel local storage');
+  }
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+  };
+
+  return this.http.patch<IUser>(`${this.baseUrl}/utenti/${userId}`, userData, httpOptions).pipe(
+    catchError(error => {
+      console.error('Errore nella chiamata PATCH per aggiornare i dati dell\'utente:', error);
+      return throwError('Errore nella chiamata PATCH');
+    })
+  );
+}
+
+uploadAvatar(userId: number, formData: FormData): Observable<IUser> {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    console.error('Token non presente nel local storage');
+    return throwError('Token non presente nel local storage');
+  }
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+  };
+
+  return this.http.patch<IUser>(`${this.baseUrl}/utenti/${userId}/upload`, formData, httpOptions);
+}
+
+getAvatarUrl(userId: number): Observable<string> {
+  return this.http.get<IUser>(`${this.baseUrl}/utenti/${userId}`).pipe(
+    map((user: IUser) => user.avatar)
+  );
+}
 }
