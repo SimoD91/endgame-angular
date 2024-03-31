@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../models/i-user';
+import { AvatarService } from '../../services/avatar.service';
 
 @Component({
   selector: 'app-header',
@@ -18,21 +19,22 @@ export class HeaderComponent implements OnInit{
   constructor(
     private router: Router,
     private authService: AuthService,
-    private userService: UserService) {}
+    private userService: UserService,
+    private avatarService: AvatarService) {}
 
   ngOnInit(): void {
     this.authService.loggedIn$.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
       this.getUserData();
     });
+    this.avatarService.getAvatarUrl().subscribe((avatarUrl: string) => {
+      this.avatarUrl = avatarUrl;
+    });
   }
+
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-  }
-
-  redirectToLoading(): void {
-    this.router.navigateByUrl('/dashboard/loading');
   }
 
   private checkLoginStatus(): void {

@@ -46,6 +46,18 @@ button{
   text-shadow: 1px 1px 3px solid black;
 }
 
+.btn1, .btn2{
+  border-radius: 10px;
+  background-color: rgb(61, 61, 61);
+  color:rgb(229, 229, 229);
+  text-shadow: 1px 1px 3px solid black;
+}
+
+.btn1:hover, .btn2:hover{
+  background-color: rgb(93, 93, 93);
+  text-shadow: 1px 1px 3px solid black;
+}
+
 .form-control{
   height: 30px;
   color: black;

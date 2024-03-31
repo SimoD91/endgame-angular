@@ -109,9 +109,78 @@ uploadAvatar(userId: number, formData: FormData): Observable<IUser> {
   return this.http.patch<IUser>(`${this.baseUrl}/utenti/${userId}/upload`, formData, httpOptions);
 }
 
-getAvatarUrl(userId: number): Observable<string> {
-  return this.http.get<IUser>(`${this.baseUrl}/utenti/${userId}`).pipe(
-    map((user: IUser) => user.avatar)
+getAvatarUrl(idUtente: number): Observable<string> {
+  return this.http.get<IUser>(`${this.baseUrl}/utenti/${idUtente}`).pipe(
+    map((idUtente: IUser) => idUtente.avatar)
+  );
+}
+
+addToFavorites(userId: number, videogameId: number): Observable<void> {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    console.error('Token non presente nel local storage');
+    return throwError('Token non presente nel local storage');
+  }
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+  };
+
+  return this.http.patch<void>(`${this.baseUrl}/utenti/${userId}/preferiti/${videogameId}`, {}, httpOptions).pipe(
+    catchError(error => {
+      console.error('Errore durante l\'aggiunta ai preferiti:', error);
+      return throwError('Errore durante l\'aggiunta ai preferiti');
+    })
+  );
+}
+
+removeFromFavorites(userId: number, videogameId: number): Observable<void> {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    console.error('Token non presente nel local storage');
+    return throwError('Token non presente nel local storage');
+  }
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+  };
+
+  return this.http.delete<void>(`${this.baseUrl}/utenti/${userId}/preferiti/${videogameId}`, httpOptions).pipe(
+    catchError(error => {
+      console.error('Errore durante la rimozione dai preferiti:', error);
+      return throwError('Errore durante la rimozione dai preferiti');
+    })
+  );
+}
+
+getFavoriteVideogameIds(userId: number): Observable<number[]> {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    console.error('Token non presente nel local storage');
+    return throwError('Token non presente nel local storage');
+  }
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+  };
+
+  return this.http.get<number[]>(`${this.baseUrl}/utenti/${userId}/preferiti`, httpOptions).pipe(
+    catchError(error => {
+      console.error('Errore durante il recupero degli ID dei videogiochi preferiti:', error);
+      return throwError('Errore durante il recupero degli ID dei videogiochi preferiti');
+    })
   );
 }
 }

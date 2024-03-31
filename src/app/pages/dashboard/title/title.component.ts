@@ -3,6 +3,7 @@ import { VideogameService } from '../../../services/videogame.service';
 import { ActivatedRoute } from '@angular/router';
 import { Ivideogamedetails } from '../models/ivideogamedetails';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-title',
@@ -17,11 +18,15 @@ export class TitleComponent implements OnInit {
   totalVideogames: number = 0;
   isEnlarged: boolean = false;
   pageNumber: number = 0;
+  isFavorite: boolean = false;
+  userId: number = 0;
+  favoriteVideogameIds: number[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private videogameService: VideogameService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -29,10 +34,19 @@ export class TitleComponent implements OnInit {
       const videogameId = params.get('id');
       if (videogameId) {
         this.getVideogameById(parseInt(videogameId));
-        this.loadVideogamesMetacritic();
+
+        const token = localStorage.getItem('token');
+        if (token) {
+          this.userId = this.userService.getUserIdFromToken(token);
+
+          this.loadFavoriteVideogameIds();
+        } else {
+          console.error('Token non presente nel local storage');
+        }
       }
     });
   }
+
 
 
   getVideogameById(id: number): void {
@@ -91,7 +105,67 @@ export class TitleComponent implements OnInit {
     this.isEnlarged = !this.isEnlarged;
   }
 
-  goToTopPage(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  addToFavorites(videogameId: number): void {
+    if (this.userId) {
+      this.userService.addToFavorites(this.userId, videogameId).subscribe(
+        () => {
+          this.favoriteVideogameIds.push(videogameId);
+        },
+        error => {
+          console.error('Errore durante l\'aggiunta ai preferiti:', error);
+        }
+      );
+    }
+  }
+
+  removeFromFavorites(videogameId: number): void {
+    if (this.userId) {
+      this.userService.removeFromFavorites(this.userId, videogameId).subscribe(
+        () => {
+          const index = this.favoriteVideogameIds.indexOf(videogameId);
+          if (index !== -1) {
+            this.favoriteVideogameIds.splice(index, 1);
+          }
+        },
+        error => {
+          console.error('Errore durante la rimozione dai preferiti:', error);
+        }
+      );
+    }
+  }
+
+  loadFavoriteVideogameIds(): void {
+    if (!this.userId) return;
+
+    this.userService.getFavoriteVideogameIds(this.userId).subscribe(
+      (data: number[]) => {
+        this.favoriteVideogameIds = data;
+      },
+      (error) => {
+        console.error('Errore nel recupero degli ID dei preferiti:', error);
+      }
+    );
+  }
+
+  toggleFavorite(): void {
+    if (!this.selectedVideogame || !this.userId) return;
+
+    const videogameId = this.selectedVideogame.idVideogioco;
+
+    const isCurrentlyFavorite = this.selectedVideogame.isFavorite;
+
+    if (isCurrentlyFavorite) {
+      this.userService.removeFromFavorites(this.userId, videogameId)?.subscribe(() => {
+        if (this.selectedVideogame) {
+          this.selectedVideogame.isFavorite = false;
+        }
+      });
+    } else {
+      this.userService.addToFavorites(this.userId, videogameId)?.subscribe(() => {
+        if (this.selectedVideogame) {
+          this.selectedVideogame.isFavorite = true;
+        }
+      });
+    }
   }
 }

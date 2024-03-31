@@ -1,5 +1,5 @@
 export interface Ivideogamedetails {
-  idVideogioco    : string
+  idVideogioco    : number
   titolo          : string
   annoDiUscita    : string
   genere          : string
@@ -15,4 +15,5 @@ export interface Ivideogamedetails {
   immagini        : string
   trailer         : string
   recensione      : string
+  isFavorite      : boolean
 }

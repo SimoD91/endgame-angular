@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { IUser } from '../../models/i-user';
 import { UserService } from '../../services/user.service';
 import { DOCUMENT } from '@angular/common';
+import { AvatarService } from '../../services/avatar.service';
 
 @Component({
   selector: 'app-user-page',
@@ -14,7 +15,8 @@ export class UserPageComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private avatarService: AvatarService
   ) { }
 
   ngOnInit(): void {
@@ -57,6 +59,7 @@ export class UserPageComponent implements OnInit {
           (user: IUser) => {
             this.currentUser = user;
             console.log('Avatar caricato con successo:', this.currentUser);
+            this.avatarService.updateAvatarUrl(user.avatar);
           },
           (error) => {
             console.error('Errore durante il caricamento dell\'avatar:', error);
