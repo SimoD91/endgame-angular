@@ -26,21 +26,21 @@ export class LoginComponent {
 
 loginUser() {
   this.logging = true;
-  this.userService.login(this.userLogin)
-    .subscribe(
-      (response: any) => {
-        console.log('Login successful:', response);
-        localStorage.setItem('token', response.token);
-        this.authService.updateLoginStatus();
-        this.isLoggedIn = true;
-        setTimeout(() => {
+  setTimeout(() => {
+    this.userService.login(this.userLogin)
+      .subscribe(
+        (response: any) => {
+          console.log('Login successful:', response);
+          localStorage.setItem('token', response.token);
+          this.authService.updateLoginStatus();
+          this.isLoggedIn = true;
           this.router.navigate(['../../dashboard/portal']);
-        }, 2000);
-      },
-      (error) => {
-        console.error('Login error:', error);
-      }
-    );
+        },
+        (error) => {
+          console.error('Login error:', error);
+        }
+      );
+  }, 2000);
 }
 
   isValidEmail(email: string): boolean {

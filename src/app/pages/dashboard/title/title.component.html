@@ -29,7 +29,6 @@
             </div>
         </div>
     </div>
-
       <div class="col-lg-8 mt-4 contTitleReview">
         <div class="ps-lg-1-6 ps-xl-5">
           <div class="mb-5">
@@ -39,7 +38,7 @@
                   <img
                     *ngIf="selectedVideogame && userId"
                     [src]="'../../../../assets/icons/star' + (selectedVideogame.isFavorite ? '-fill' : '') + '.svg'"
-                    alt="star-icon"
+                    alt="star-icon" class="star"
                     (click)="toggleFavorite()">
                 </h1>
                 <div class="d-flex align-items-center">

@@ -12,6 +12,7 @@ import { AvatarService } from '../../services/avatar.service';
 export class UserPageComponent implements OnInit {
   currentUser: IUser | null = null;
   avatarFile: File | null = null;
+  avatarUploaded: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -60,6 +61,7 @@ export class UserPageComponent implements OnInit {
             this.currentUser = user;
             console.log('Avatar caricato con successo:', this.currentUser);
             this.avatarService.updateAvatarUrl(user.avatar);
+            this.avatarUploaded = false;
           },
           (error) => {
             console.error('Errore durante il caricamento dell\'avatar:', error);
@@ -77,6 +79,7 @@ export class UserPageComponent implements OnInit {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files) {
       this.avatarFile = inputElement.files[0];
+      this.avatarUploaded = true;
     }
   }
 }

@@ -180,13 +180,19 @@ margin-top: 25px;
   text-decoration: underline;
 }
 
-
 @media screen and (max-width: 1399.50px){
-
 input{
   margin-right: -50px;
 }
 }
+
+@media screen and (min-width: 991.50px) and (max-width: 1199.50px) {
+  .colCard {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
 @media screen and (max-width: 991.50px){
   .bodyPortal{
     height: 100%;
