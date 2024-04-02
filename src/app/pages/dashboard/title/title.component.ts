@@ -47,8 +47,7 @@ export class TitleComponent implements OnInit {
     });
   }
 
-
-
+  //--- Recupera l'id del videogioco per mostrarne i dettagli ---\\
   getVideogameById(id: number): void {
     this.videogameService.getVideogiocoById(id).subscribe(
       (data: Ivideogamedetails) => {
@@ -63,38 +62,7 @@ export class TitleComponent implements OnInit {
     );
   }
 
-  private extractVideoId(url: string): string {
-    const pattern =
-      /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    const match = url.match(pattern);
-    if (match && match[1]) {
-      return match[1];
-    }
-    return '';
-  }
-
-  getYouTubeEmbedUrl(videoUrl: string | undefined): string {
-    if (!videoUrl) return '';
-    const videoId = this.extractVideoId(videoUrl);
-    return `https://www.youtube.com/embed/${videoId}`;
-  }
-
-  loadVideogamesMetacritic(): void {
-    this.videogameService.getAllVideogamesByMetacritic(this.pageNumber).subscribe(
-      (data: any) => {
-        if (data && Array.isArray(data.content)) {
-          this.videogames = data.content;
-          this.totalVideogames = data.totalElements;
-        } else {
-          console.error('Dati non validi per i videogiochi:', data);
-        }
-      },
-      (error) => {
-        console.error('Errore durante il recupero dei videogiochi:', error);
-      }
-    );
-  }
-
+  //--- Aumenta le dimensioni delle immagini nella colonna sx ---\\
   toggleEnlarged(event: MouseEvent) {
     const imgElement = event.target as HTMLElement;
     if (this.isEnlarged) {
@@ -105,6 +73,7 @@ export class TitleComponent implements OnInit {
     this.isEnlarged = !this.isEnlarged;
   }
 
+  //--- Aggiunge ai preferiti dell'utente ---\\
   addToFavorites(videogameId: number): void {
     if (this.userId) {
       this.userService.addToFavorites(this.userId, videogameId).subscribe(
@@ -118,6 +87,7 @@ export class TitleComponent implements OnInit {
     }
   }
 
+  //--- Rimuove dai preferiti dell'utente ---\\
   removeFromFavorites(videogameId: number): void {
     if (this.userId) {
       this.userService.removeFromFavorites(this.userId, videogameId).subscribe(
@@ -134,6 +104,7 @@ export class TitleComponent implements OnInit {
     }
   }
 
+  //--- Carica i preferiti dell'utente per verificare se il gioco è già tra i preferiti ---\\
   loadFavoriteVideogameIds(): void {
     if (!this.userId) return;
 
@@ -147,6 +118,7 @@ export class TitleComponent implements OnInit {
     );
   }
 
+  //--- Stella per permettere aggiunta e rimozione dai preferiti dell'utente ---\\
   toggleFavorite(): void {
     if (!this.selectedVideogame || !this.userId) return;
 

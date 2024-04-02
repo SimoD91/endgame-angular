@@ -21,10 +21,12 @@ export class LoaderService {
     });
   }
 
+  //--- Mostra loader ---\\
   show(): void {
     this.isLoading = true;
   }
 
+  //--- Nascondi loader ---\\
   hide(): void {
     this.isLoading = false;
   }

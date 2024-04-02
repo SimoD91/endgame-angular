@@ -32,6 +32,7 @@ export class PortalComponent implements OnInit {
     this.loadVideogamesMetacritic();
   }
 
+    //--- Caricamento videogiochi metacritic ad avvio pagina ---\\
   loadVideogamesMetacritic(): void {
     this.videogameService.getAllVideogamesByMetacritic(this.currentPage).subscribe(
       (data: any) => {
@@ -51,6 +52,7 @@ export class PortalComponent implements OnInit {
     );
   }
 
+   //--- Caricamento videogiochi totali nel DB ---\\
   loadAllVideogames(): void {
     this.pageTitle = 'Tutti i titoli';
     this.videogameService.getAllVideogames(this.currentPage).subscribe(
@@ -71,7 +73,7 @@ export class PortalComponent implements OnInit {
     );
   }
 
-
+ //--- Ricerca videogiochi in searchbar ---\\
   searchGames(): void {
     const searchTitle = this.searchQuery.trim();
     const searchYear = this.searchYear.trim();
@@ -105,6 +107,8 @@ export class PortalComponent implements OnInit {
       }
     }
 }
+
+//--- Errore in caso di nessun risultato a schermo ---\\
 setErrorMessageIfNoResults(): void {
   if (this.searchedVideogames.length === 0) {
     this.errorMessage = 'Nessun gioco trovato';
@@ -113,15 +117,17 @@ setErrorMessageIfNoResults(): void {
   }
 }
 
-
+//--- Svuotamento campo input titolo searchbar dopo click ---\\
 clearSearchQuery(): void {
   this.searchQuery = '';
 }
 
+//--- Svuotamento campo input anno searchbar dopo click ---\\
 clearSearchYear(): void {
   this.searchYear = '';
 }
 
+//--- Ricerca incrociata videogiochi per titolo e genere ---\\
   searchGamesByTitleAndGenre(searchTerm: string, selectedGenre: string): void {
     this.videogameService.searchVideogamesTitleAndGenre(searchTerm, selectedGenre).subscribe(
       (data: any) => {
@@ -141,6 +147,7 @@ clearSearchYear(): void {
     );
   }
 
+  //--- Rimozione duplicati videogiochi dopo ricerca ---\\
   removeDuplicates(games: any[]): any[] {
     const uniqueGames: any[] = [];
     const uniqueGameTitles = new Set<string>();
@@ -159,6 +166,7 @@ clearSearchYear(): void {
     return uniqueGames;
   }
 
+  //--- Ricerca videogioco per titolo ---\\
   searchGamesByTitle(searchTerm: string): void {
     this.videogameService.searchVideogames(searchTerm).subscribe(
       (data: any) => {
@@ -187,11 +195,8 @@ clearSearchYear(): void {
     );
   }
 
-
+  //--- Ricerca videogioco per genere ---\\
   searchGamesByGenre(selectedGenre: string): void {
-    console.log('Genere selezionato:', selectedGenre);
-
-
     if (this.searchQuery.trim()) {
       this.videogameService.searchVideogames(this.searchQuery.trim()).subscribe(
         (data: any) => {
@@ -228,12 +233,13 @@ clearSearchYear(): void {
       );
     }
   }
+
+  //--- Ricerca videogioco per anno ---\\
   searchGamesByYear(year: number): void {
     if (!year) {
       console.error('Anno non valido');
       return;
     }
-
     this.videogameService.searchVideogamesByYear(year).subscribe(
       (data: any) => {
         if (data && Array.isArray(data.content)) {
@@ -252,6 +258,7 @@ clearSearchYear(): void {
     );
   }
 
+  //--- Ricerca videogioco per console ---\\
   searchGamesByConsole(): void {
     if (this.selectedConsole) {
       this.videogameService.searchVideogamesByConsole(this.selectedConsole).subscribe(
@@ -275,6 +282,7 @@ clearSearchYear(): void {
     }
   }
 
+  //--- Numeri paginazione ---\\
   goToPage(pageNumber: number): void {
     if (pageNumber >= 0 && pageNumber <= this.totalPages) {
       this.currentPage = pageNumber;
@@ -282,6 +290,7 @@ clearSearchYear(): void {
     }
   }
 
+  //--- Button pagina precedente paginazione ---\\
   previousPage(): void {
     if (this.currentPage > 0) {
       this.currentPage--;
@@ -289,6 +298,7 @@ clearSearchYear(): void {
     }
   }
 
+  //--- Button pagina successiva paginazione ---\\
   nextPage(): void {
     if (this.currentPage < this.totalPages - 1) {
       this.currentPage++;

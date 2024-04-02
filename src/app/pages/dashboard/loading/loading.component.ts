@@ -7,6 +7,8 @@ import { OnDestroy } from '@angular/core';
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.scss']
 })
+
+//--- Componente inutilizzato, sostituito da loader ---\\
 export class LoadingComponent implements OnDestroy {
   private timer: any;
   showContainer: boolean = false;

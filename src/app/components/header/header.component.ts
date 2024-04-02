@@ -32,11 +32,12 @@ export class HeaderComponent implements OnInit{
     });
   }
 
-
+  //--- Menù hamburger in responsive ---\\
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
+  //--- Verifica stato login utente tramite token ---\\
   private checkLoginStatus(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       const token = localStorage.getItem('token');
@@ -44,6 +45,7 @@ export class HeaderComponent implements OnInit{
     }
   }
 
+  //--- Logout e reindirizzamento a dashboard ---\\
   logout(): void {
     localStorage.removeItem('token');
     this.isLoggedIn = false;
@@ -51,6 +53,7 @@ export class HeaderComponent implements OnInit{
     this.checkLoginStatus();
   }
 
+  //--- Recupero dati utente dopo login ---\\
   getUserData(): void {
     if (typeof localStorage !== 'undefined') {
       const token = localStorage.getItem('token');
@@ -60,7 +63,6 @@ export class HeaderComponent implements OnInit{
           this.userService.getUserById(userId).subscribe(
             (user: IUser) => {
               this.currentUser = user;
-              console.log('Dati utente:', this.currentUser);
               if (this.currentUser && this.currentUser.avatar) {
                 this.avatarUrl = this.currentUser.avatar;
               }
@@ -79,6 +81,7 @@ export class HeaderComponent implements OnInit{
     }
   }
 
+  //--- Aggiornamento avatar utente in header ---\\
   updateAvatar(): void {
     if (this.currentUser && this.currentUser.avatar) {
       this.avatarUrl = this.currentUser.avatar;

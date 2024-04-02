@@ -13,19 +13,22 @@ export class AuthService {
 
   constructor() {}
 
+  //-- Verifica se l'utente è autenticato --\\
   public isLoggedIn(): boolean {
     const token = localStorage.getItem('token');
     return !!token;
   }
-
+  //-- Aggiorna lo stato di accesso dell'utente --\\
   public updateLoginStatus(): void {
     this.loggedInSubject.next(this.isLoggedIn());
   }
 
+    //-- Imposta l'utente corrente --\\
   public setCurrentUser(user: IUser | null): void {
     this.currentUserSubject.next(user);
   }
 
+  //-- Restituisce l'utente corrente --\\
   public getCurrentUser(): IUser | null {
     return this.currentUserSubject.value;
   }

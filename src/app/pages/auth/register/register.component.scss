@@ -7,6 +7,9 @@
   padding: 0;
   height: 100vh;
 }
+
+//--- Form registrazione ---\\
+
 .registration-box {
   margin-top: 47px;
   margin-left: -100%;
@@ -44,6 +47,7 @@ input{
   font-optical-sizing: auto;
   font-style: normal;
   height: 25px;
+  color: #217ea0;
 }
 input:focus{
   -webkit-box-shadow: none;

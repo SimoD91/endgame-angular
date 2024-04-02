@@ -24,6 +24,7 @@ export class UserPageComponent implements OnInit {
     this.getUserData();
   }
 
+  //--- Recupera i dati dell'utente ---\\
   getUserData(): void {
     if (typeof localStorage !== 'undefined') {
     const token = localStorage.getItem('token');
@@ -33,7 +34,6 @@ export class UserPageComponent implements OnInit {
         this.userService.getUserById(userId).subscribe(
           (user: IUser) => {
             this.currentUser = user;
-            console.log('Dati utente:', this.currentUser);
           },
           (error) => {
             console.error('Errore nel recupero dei dati utente:', error);
@@ -48,6 +48,7 @@ export class UserPageComponent implements OnInit {
   }
   }
 
+  //--- Carica l'avatar tramite chiamata patch ---\\
   onUploadAvatar(): void {
     if (this.avatarFile) {
       const userId = this.currentUser?.idUtente;
@@ -59,7 +60,6 @@ export class UserPageComponent implements OnInit {
         this.userService.uploadAvatar(userId, formData).subscribe(
           (user: IUser) => {
             this.currentUser = user;
-            console.log('Avatar caricato con successo:', this.currentUser);
             this.avatarService.updateAvatarUrl(user.avatar);
             this.avatarUploaded = false;
           },
@@ -75,6 +75,7 @@ export class UserPageComponent implements OnInit {
     }
   }
 
+  //--- Aggiornamento avatar caricato a schermo ---\\
   onAvatarChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files) {

@@ -1,3 +1,5 @@
+//--- Componente video loading tra pagine ---\\
+
 .background {
   background-color: black;
   height: 100vh;
@@ -25,10 +27,11 @@
 }
 
 @media screen and (max-width:767px){
-    .background{
+    .background {
       height: 100vh;
     }
-    .box-auth {
-      width: 100%;
+
+    video {
+      width: 600px;
     }
 }

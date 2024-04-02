@@ -9,10 +9,12 @@ export class AvatarService {
 
   constructor() {}
 
+  //--- Aggiorna l'URL dell'avatar dell'utente --\\
   public updateAvatarUrl(newAvatarUrl: string): void {
     this.avatarUrlSubject.next(newAvatarUrl);
   }
 
+ //--- Ottiene l'URL dell'avatar dell'utente --\\
   public getAvatarUrl(): Observable<string> {
     return this.avatarUrlSubject.asObservable();
   }

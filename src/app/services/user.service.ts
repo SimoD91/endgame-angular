@@ -14,14 +14,17 @@ export class UserService {
 
   private baseUrl = 'http://localhost:8080';
 
+  //--- Registrazione utente ---\\
   register(user: UserRegister): Observable<IUser> {
     return this.http.post<any>(`${this.baseUrl}/auth/register`, user);
   }
 
+  //--- Login utente ---\\
   login(credentials: UserLogin): Observable<IConfirmRes> {
     return this.http.post<any>(`${this.baseUrl}/auth/login`, credentials);
   }
 
+  //--- Ottieni id utente autenticato estraendolo dal token ---\\
   public getUserIdFromToken(token: string): number {
     let idUtente: number;
     try {
@@ -32,10 +35,8 @@ export class UserService {
         }).join(''));
 
         const tokenPayload = JSON.parse(jsonPayload);
-        console.log(tokenPayload)
         if (tokenPayload && tokenPayload.hasOwnProperty('sub')) {
             idUtente = tokenPayload.sub;
-            console.log('idUtente estratto dal token:', idUtente);
         } else {
             console.error('Campo idUtente non presente nel token.');
             throw new Error('Campo idUtente non presente nel token.');
@@ -47,7 +48,7 @@ export class UserService {
     return idUtente;
 }
 
-
+//--- Ottiene i dettagli dell'utente specificato ---\\
 getUserById(userId: number): Observable<IUser> {
   const token = localStorage.getItem('token');
 
@@ -69,6 +70,7 @@ getUserById(userId: number): Observable<IUser> {
   );
 }
 
+//--- Aggiorna i dati dell'utente ---\\
 updateUser(userId: number, userData: any): Observable<IUser> {
   const token = localStorage.getItem('token');
 
@@ -92,6 +94,7 @@ updateUser(userId: number, userData: any): Observable<IUser> {
   );
 }
 
+//--- Carica avatar utente ---\\
 uploadAvatar(userId: number, formData: FormData): Observable<IUser> {
   const token = localStorage.getItem('token');
 
@@ -109,12 +112,14 @@ uploadAvatar(userId: number, formData: FormData): Observable<IUser> {
   return this.http.patch<IUser>(`${this.baseUrl}/utenti/${userId}/upload`, formData, httpOptions);
 }
 
+//--- Ottieni url avatar utente ---\\
 getAvatarUrl(idUtente: number): Observable<string> {
   return this.http.get<IUser>(`${this.baseUrl}/utenti/${idUtente}`).pipe(
     map((idUtente: IUser) => idUtente.avatar)
   );
 }
 
+//--- Aggiungi ai preferiti utente ---\\
 addToFavorites(userId: number, videogameId: number): Observable<void> {
   const token = localStorage.getItem('token');
 
@@ -138,6 +143,7 @@ addToFavorites(userId: number, videogameId: number): Observable<void> {
   );
 }
 
+//--- Rimuovi dai preferiti utente ---\\
 removeFromFavorites(userId: number, videogameId: number): Observable<void> {
   const token = localStorage.getItem('token');
 
@@ -161,6 +167,7 @@ removeFromFavorites(userId: number, videogameId: number): Observable<void> {
   );
 }
 
+//--- Ottieni id dei preferiti utente ---\\
 getFavoriteVideogameIds(userId: number): Observable<number[]> {
   const token = localStorage.getItem('token');
 

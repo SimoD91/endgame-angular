@@ -1,5 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/gobold');
-.bodyAbout{
+.bodyAbout {
   background: linear-gradient(to top, #000000, #505050);
   background-position: center center;
   background-repeat: repeat-x;
@@ -9,6 +9,8 @@
   padding: 0;
   height: 100%;
 }
+
+//--- Sezione principale ---\\
 
 h1 {
   color: white;
@@ -30,11 +32,13 @@ p {
   text-shadow: 1px 1px 3px black;
 }
 
+//--- Sezione secondaria ---\\
+
 img {
   width: 10%;
 }
 
-.contact{
+.contact {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -42,6 +46,6 @@ img {
   text-shadow: 1px 1px 3px black;
 }
 
-a{
+a {
   text-decoration: none;
 }

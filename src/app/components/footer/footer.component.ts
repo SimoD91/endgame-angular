@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-hideFooter: boolean = false;
 
 constructor(private router: Router){
 }

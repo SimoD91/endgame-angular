@@ -10,7 +10,34 @@
   position: relative;
 }
 
-h1, p, label, input{
+.custom-container {
+  padding-top: 70px;
+  width: 50%;
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+    .col-md-6 {
+      @media (min-width: 768px) {
+        max-width: 50%;
+        flex: 0 0 50%;
+      }
+    }
+    .col-md-12 {
+      max-width: 100%;
+      flex: 0 0 100%;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+//--- Colonna dx ---\\
+
+.form-control{
+  height: 30px;
+  color: black;
+}
+
+h1, label, input{
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -28,6 +55,8 @@ h2 {
   color: #ffffff;
   font-size: 1.1rem;
 }
+
+//--- Colonna sx ---\\
 
 .img-fluid{
   max-width: 50%;
@@ -63,30 +92,7 @@ button{
   text-shadow: 1px 1px 3px solid black;
 }
 
-.form-control{
-  height: 30px;
-  color: black;
-}
-
-.custom-container {
-  padding-top: 70px;
-  width: 50%;
-  .row {
-    margin-right: 0;
-    margin-left: 0;
-    .col-md-6 {
-      @media (min-width: 768px) {
-        max-width: 50%;
-        flex: 0 0 50%;
-      }
-    }
-    .col-md-12 {
-      max-width: 100%;
-      flex: 0 0 100%;
-      margin-bottom: 1rem;
-    }
-  }
-}
+//--- Sezione preferiti ---\\
 
 .prefContainer{
   border-top: 1px solid rgb(255, 255, 255);
@@ -143,6 +149,14 @@ button{
   font-size: 0.7rem;
 }
 
+#card-genre, #card-year {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color:white;
+  text-shadow: 1px 1px 3px black;
+}
+
 .posterImage{
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
@@ -153,4 +167,11 @@ button{
 
 .contButtons{
 margin-top: 25px;
+}
+
+@media (max-width: 575.50px){
+.colPrefCard{
+  margin-left: auto;
+  margin-right: auto;
+}
 }

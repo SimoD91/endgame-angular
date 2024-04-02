@@ -9,6 +9,8 @@
   height: 100%;
 }
 
+//--- Colonna sx ---\\
+
 .posterImm{
   max-width: 210px;
   max-height: 310px;
@@ -40,9 +42,7 @@ iframe{
   box-shadow: 1px 1px 3px black;
 }
 
-.cardContainer{
-  padding-bottom: 50px;
-}
+//--- Colonna dx ---\\
 
 .containTitle{
   border-bottom: 1px solid white;
@@ -70,7 +70,6 @@ h1, h3{
   font-size: 1rem;
 }
 
-
 p{
   color:white;
   text-shadow: 1px 1px 3px black;
@@ -88,37 +87,6 @@ p{
   font-family: 'Gobold Lowplus', sans-serif;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.497);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.636);
-}
-
-.card{
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  border: none;
-  height: 100%;
-  box-shadow: 1px 1px 3px black;
-  background: linear-gradient(to top, #000000, #ffffff);
-  transition: 0.4s ease;
-}
-
-.card:hover{
-  transform:scale(1.1);
-  cursor:pointer;
-}
-
-.card-body{
-  padding: 0px;
-  height: 100%;
-  font-size: 0.7rem;
-}
-
-.posterImage{
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  height: 250px;
-  width: 100%;
-  box-shadow: 1px 1px 3px black;
 }
 
 span{

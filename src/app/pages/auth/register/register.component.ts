@@ -25,6 +25,7 @@ export class RegisterComponent {
 
   constructor(private userService: UserService, private router: Router) {}
 
+  //--- Registrazione utente ---\\
   registerUser() {
     if (!this.isValidEmail(this.userRegister.email)) {
       console.error('Email non valida');
@@ -35,7 +36,6 @@ export class RegisterComponent {
     this.userService.register(this.userRegister)
       .subscribe(
         (response) => {
-          console.log('Registration successful:', response);
           setTimeout(() => {
             this.router.navigate(['auth/login'])
           }, 2000);
@@ -47,19 +47,23 @@ export class RegisterComponent {
       );
   }
 
+    //--- Verifica email in input email ---\\
   isValidEmail(email: string): boolean {
     const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
     return emailPattern.test(email);
   }
 
+   //--- Modifica stato campo input ---\\
   onInputChange(inputId: string) {
     this.inputActiveStates[inputId] = true;
   }
 
+   //--- Modifica blur campo input ---\\
   onInputBlur(inputId: string) {
     this.inputActiveStates[inputId] = false;
   }
 
+    //--- Icone visibilità password ---\\
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
     const imgElement = document.getElementById('password-toggle-img') as HTMLImageElement;
