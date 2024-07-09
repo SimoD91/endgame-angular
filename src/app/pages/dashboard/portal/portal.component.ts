@@ -24,6 +24,12 @@ export class PortalComponent implements OnInit {
   totalPages: number = 0;
   pageNumbers: number[] = [];
   showPagination = false;
+  pageNumberConsole = 0;
+  currentPageConsole: number = 0;
+  totalPagesConsole: number = 0;
+  pageNumbersConsole: number[] = [];
+  searchPageNumber: number = 0;
+  showConsolePagination = false;
 
   constructor(private videogameService: VideogameService) {
   }
@@ -63,6 +69,7 @@ export class PortalComponent implements OnInit {
           this.totalPages = data.totalPages;
           this.pageNumbers = this.totalPages > 0 ? Array.from({length: this.totalPages}, (_, i) => i) : [];
           this.showPagination = true;
+          this.showConsolePagination = false;
         } else {
           console.error('Dati non validi per i videogiochi:', data);
         }
@@ -74,39 +81,32 @@ export class PortalComponent implements OnInit {
   }
 
  //--- Ricerca videogiochi in searchbar ---\\
-  searchGames(): void {
-    const searchTitle = this.searchQuery.trim();
-    const searchYear = this.searchYear.trim();
-    const searchGenre = this.selectedGenre;
-    const searchConsole = this.selectedConsole;
+ searchGames(): void {
+  const searchTitle = this.searchQuery.trim();
+  const searchYear = this.searchYear.trim();
+  const searchGenre = this.selectedGenre;
+  const searchConsole = this.selectedConsole;
 
-    const isSearchEmptyOrAny = (!searchTitle || searchTitle === '') && (!searchGenre || searchGenre === 'any') && (!searchYear || searchYear === '') && (!searchConsole || searchConsole === 'any');
+  const isSearchEmptyOrAny = !searchTitle && !searchGenre && !searchYear && (!searchConsole || searchConsole === 'any');
 
-    if (isSearchEmptyOrAny) {
-      this.loadAllVideogames();
-      this.errorMessage = '';
-      return;
-    }
+  if (isSearchEmptyOrAny) {
+    this.loadAllVideogames();
+    this.errorMessage = '';
+    return;
+  }
 
-
-    if (searchTitle && !searchGenre && !searchYear && !searchConsole) {
-      this.searchGamesByTitle(searchTitle);
-    } else if ((!searchTitle || searchTitle === '') && (!searchGenre || searchGenre === 'any') && searchYear && !searchConsole) {
-      this.searchGamesByYear(parseInt(searchYear));
-    } else if ((!searchTitle || searchTitle === '') && (!searchGenre || searchGenre === 'any') && !searchYear && searchConsole && searchConsole !== 'any') {
-      this.searchGamesByConsole();
-    } else if ((!searchTitle || searchTitle === '') && (!searchGenre || searchGenre === 'any') && !searchYear && searchConsole && searchConsole === 'any') {
-      this.loadAllVideogames();
-    } else if (!searchTitle && searchGenre && !searchYear && !searchConsole) {
-      this.searchGamesByGenre(searchGenre);
-    } else if (searchTitle && searchGenre && !searchYear && !searchConsole) {
-      if (!searchGenre || searchGenre === 'any')  {
-        this.searchGamesByTitle(searchTitle);
-      } else {
-        this.searchGamesByTitleAndGenre(searchTitle, searchGenre);
-      }
-    }
+  if (searchTitle) {
+    this.searchGamesByTitle(searchTitle);
+  } else if (searchYear) {
+    this.searchGamesByYear(parseInt(searchYear, 10));
+  } else if (searchGenre && searchGenre !== 'any') {
+    this.searchGamesByGenre(searchGenre);
+  } else if (searchConsole && searchConsole !== 'any') {
+    this.currentPageConsole = 0;
+    this.searchVideogamesByConsole();
+  }
 }
+
 
 //--- Errore in caso di nessun risultato a schermo ---\\
 setErrorMessageIfNoResults(): void {
@@ -258,15 +258,18 @@ clearSearchYear(): void {
     );
   }
 
-  //--- Ricerca videogioco per console ---\\
-  searchGamesByConsole(): void {
-    if (this.selectedConsole) {
-      this.videogameService.searchVideogamesByConsole(this.selectedConsole).subscribe(
+  searchVideogamesByConsole(): void {
+    if (this.selectedConsole && this.selectedConsole !== 'any') {
+      this.videogameService.searchVideogamesByConsole(this.selectedConsole, this.currentPageConsole).subscribe(
         (data: any) => {
           if (data && Array.isArray(data.content)) {
             this.searchedVideogames = data.content;
             this.totalVideogames = data.totalElements;
+            this.totalPagesConsole = data.totalPages;
+            this.pageNumbersConsole = this.totalPagesConsole > 0 ? Array.from({length: this.totalPagesConsole}, (_, i) => i) : [];
             this.searched = true;
+            this.showConsolePagination = true;
+            this.showPagination = false;
           } else {
             console.error('Dati non validi per i videogiochi:', data);
             this.searchedVideogames = [];
@@ -278,7 +281,12 @@ clearSearchYear(): void {
         }
       );
     } else {
-      console.error('Nessuna console selezionata.');
+      this.searchedVideogames = [];
+      this.totalVideogames = 0;
+      this.totalPagesConsole = 0;
+      this.pageNumbersConsole = [];
+      this.showConsolePagination = false;
+      this.loadAllVideogames();
     }
   }
 
@@ -305,4 +313,28 @@ clearSearchYear(): void {
       this.loadAllVideogames();
     }
   }
+
+  //--- Numeri paginazione per ricerca per console ---\\
+goToConsolePage(pageNumberConsole: number): void {
+  if (pageNumberConsole >= 0 && pageNumberConsole <= this.totalPagesConsole) {
+    this.currentPageConsole = pageNumberConsole;
+    this.searchVideogamesByConsole();
+  }
+}
+
+//--- Button pagina precedente paginazione per ricerca per console ---\\
+previousConsolePage(): void {
+  if (this.currentPageConsole > 0) {
+    this.currentPageConsole--;
+    this.searchVideogamesByConsole();
+  }
+}
+
+//--- Button pagina successiva paginazione per ricerca per console ---\\
+nextConsolePage(): void {
+  if (this.currentPageConsole < this.totalPagesConsole - 1) {
+    this.currentPageConsole++;
+    this.searchVideogamesByConsole();
+  }
+}
 }

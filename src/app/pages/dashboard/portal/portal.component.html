@@ -97,20 +97,36 @@
               </div>
             </div>
           </ng-container>
-
-          <!-- Numeri e buttons paginazione -->
-          <div class="pagination-buttons d-flex justify-content-center">
-            <button (click)="previousPage()" [disabled]="currentPage === 0" class="text-light butPage">
-              &lt;
-            </button>
-            <button *ngFor="let pageNumber of pageNumbers" (click)="goToPage(pageNumber)" [class.active]="pageNumber === currentPage" class="text-light">
-              {{ pageNumber + 1 }}
-            </button>
-            <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1" class="text-light butPage">
-              &gt;
-            </button>
-          </div>
         </ng-template>
+
+          <!-- Numeri e buttons paginazione per ricerca generale -->
+          <div *ngIf="showPagination" class="pagination-container">
+            <div class="pagination-buttons d-flex justify-content-center">
+              <button (click)="previousPage()" [disabled]="currentPage === 0" class="text-light butPage">
+                &lt;
+              </button>
+              <button *ngFor="let pageNumber of pageNumbers" (click)="goToPage(pageNumber)" [class.active]="pageNumber === currentPage" class="text-light">
+                {{ pageNumber + 1 }}
+              </button>
+              <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1" class="text-light butPage">
+                &gt;
+              </button>
+            </div>
+          </div>
+          <!-- Numeri e buttons paginazione per ricerca per console -->
+          <div *ngIf="showConsolePagination" class="pagination-container">
+            <div class="pagination-buttons d-flex justify-content-center">
+              <button (click)="previousConsolePage()" [disabled]="currentPageConsole === 0" class="text-light butPage">
+                &lt;
+              </button>
+              <button *ngFor="let pageNumberConsole of pageNumbersConsole" (click)="goToConsolePage(pageNumberConsole)" [class.active]="pageNumberConsole === currentPageConsole" class="text-light">
+                {{ pageNumberConsole + 1 }}
+              </button>
+              <button (click)="nextConsolePage()" [disabled]="currentPageConsole === totalPagesConsole - 1" class="text-light butPage">
+                &gt;
+              </button>
+            </div>
+          </div>
       </div>
     </div>
   </div>

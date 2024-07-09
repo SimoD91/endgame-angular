@@ -49,10 +49,10 @@ apiUrlAll = 'http://localhost:8080/videogiochi/get';
   }
 
   //--- Ricerca videogiochi per console ---\\
-  searchVideogamesByConsole(selectedConsole: string): Observable<any> {
-    const url = `http://localhost:8080/videogiochi/get/sorted/console?console=${selectedConsole}`;
-    return this.http.get<Ivideogame[]>(url);
-  }
+  searchVideogamesByConsole(selectedConsole: string, pageNumberConsole: number): Observable<any> {
+  const url = `http://localhost:8080/videogiochi/get/sorted/console?console=${selectedConsole}&page=${pageNumberConsole}`;
+  return this.http.get<Ivideogame[]>(url);
+}
 
   //--- Recupera videogioco per id ---\\
   getVideogiocoById(id: number): Observable<Ivideogamedetails> {
